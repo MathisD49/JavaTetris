@@ -34,8 +34,10 @@ public class SimpleSlickGame extends BasicGame
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{
 		g.drawString("Howdy!", 100, 100);
-		g.setColor(Color.green);
-		g.fillRect(100, 0+position, 75, 75);
+		Tetriminos square = new Tetriminos(Color.red, 30, 30, 100, 0+position);
+		square.createSquare(g);
+//		g.setColor(Color.green);
+//		g.fillRect(100, 0+position, 75, 75);
 		
 		
 //		for(int i = 100; i<130; i++) {
