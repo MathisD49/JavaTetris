@@ -4,6 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 import fr.campusacademy.tetris.game.SimpleSlickGame;
@@ -14,8 +15,10 @@ public class Launcher {
 		try
 		{
 			AppGameContainer appgc;
-			appgc = new AppGameContainer(new SimpleSlickGame("Simple Slick Game"));
-			appgc.setDisplayMode(640, 480, false);
+			appgc = new AppGameContainer(new SimpleSlickGame("Tetris"));
+			appgc.setDisplayMode(500, 900, false);
+			appgc.setTargetFrameRate(26);
+			Input.disableControllers();
 			appgc.start();
 		}
 		catch (SlickException ex)
