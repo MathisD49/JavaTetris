@@ -17,7 +17,7 @@ public class Launcher {
 			AppGameContainer appgc;
 			appgc = new AppGameContainer(new SimpleSlickGame("Tetris"));
 			appgc.setDisplayMode(500, 900, false);
-			appgc.setTargetFrameRate(26);
+			appgc.setTargetFrameRate(2);
 			Input.disableControllers();
 			appgc.start();
 		}
