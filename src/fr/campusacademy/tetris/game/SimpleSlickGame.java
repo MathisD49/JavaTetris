@@ -14,12 +14,12 @@ import org.newdawn.slick.SlickException;
 public class SimpleSlickGame extends BasicGame
 {
 	
-	int position = 5;
-	int xAxe = 105;
+	int position = 0;
+	int xAxe = 100;
 	private final int size = 50;
 	private final ArrayList<Tetriminos> blocks = new ArrayList<>();
 	
-	int[] Ycoordinate = {855};
+	int[] Ycoordinate = {850};
 	
 	private GameContainer gc;
 	
@@ -35,7 +35,7 @@ public class SimpleSlickGame extends BasicGame
 	public void update(GameContainer gc, int i) throws SlickException {
 		if (position == Ycoordinate[0]-50) {
 			
-		}else if (position != 855) {
+		}else if (position != 850) {
 			position = position + 50;
 		}
 		
@@ -58,11 +58,11 @@ public class SimpleSlickGame extends BasicGame
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{
 		//float x = (float) Math.ceil();
-		Tetriminos square = new Tetriminos(Color.red, 30, 30, xAxe, position);
+		Tetriminos square = new Tetriminos(Color.red, 50, 50, xAxe, position);
 		g.drawString("x : " + square.getX() + " | y : " + square.getY(), 100, 100);
 		square.createSquare(g);
 		
-		Tetriminos square2 = new Tetriminos(Color.red, 30, 30, xAxe, 855);
+		Tetriminos square2 = new Tetriminos(Color.red, 50, 50, xAxe, 850);
 		g.drawString("x : " + square2.getX() + " | y : " + square2.getY(), 120, 120);
 		square2.createSquare(g);
 		
