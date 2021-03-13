@@ -10,6 +10,7 @@ public class Tetriminos {
 	private int width;
 	private int x;
 	private int y;
+	private boolean isMovable;
 	
 	public Tetriminos() {
 		
@@ -21,6 +22,7 @@ public class Tetriminos {
 		this.width = width;
 		this.x = x;
 		this.y = y;
+		this.setMovable(true);
 	}
 	
 	public void createSquare(Graphics g) {
@@ -68,6 +70,24 @@ public class Tetriminos {
 	public void setY(int y) {
 		this.y = y;
 	}
+
+	public boolean isMovable() {
+		return isMovable;
+	}
+
+	public void setMovable(boolean isMovable) {
+		this.isMovable = isMovable;
+	}
+
+	@Override
+	public String toString() {
+		return "Tetriminos [color=" + color + ", height=" + height + ", width=" + width + ", x=" + x + ", y=" + y
+				+ ", isMovable=" + isMovable + "]";
+	}
+	
+	
+	
+	//créer une methode pour faire aller les pieces à droite ou à gauche
 	
 	
 	
