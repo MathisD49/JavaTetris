@@ -82,16 +82,11 @@ public class SimpleSlickGame extends BasicGame
 			
 		}
 		
-//		if (gc.getInput().isMouseButtonDown(0)) {
-//			float x = (float) Math.ceil(gc.getInput().getMouseX() / size * size);
-//			float y = (float) Math.ceil(gc.getInput().getMouseY() / size * size);
-//		}
 	}
 
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{
-		//float x = (float) Math.ceil();
 		g.drawString("x : " + square.getX() + " | y : " + square.getY(), 100, 100);
 		square.createSquare(g);
 		
@@ -100,7 +95,6 @@ public class SimpleSlickGame extends BasicGame
 		blocks.add(square2);
 		g.drawString("coordinate : " + Ycoordinate[0], 140, 140);
 		
-		//g.drawString("x : " + square3.getX() + " | y : " + square3.getY(), 120, 120);
 		square3.createSquare(g);
 		blocks.add(square3);
 		
@@ -119,14 +113,6 @@ public class SimpleSlickGame extends BasicGame
 				g.drawLine(x2, y, x2, gc.getHeight());
 			}
 		}
-//		g.setColor(Color.green);
-//		g.fillRect(100, 0+position, 75, 75);
-		
-		
-//		for(int i = 100; i<130; i++) {
-//			g.drawRect(i, i, 30, 30);
-//			g.setColor(Color.red);
-//		}
 		
 	}
 	
@@ -139,18 +125,10 @@ public class SimpleSlickGame extends BasicGame
 }
 
 
-// mettre les coordonnées des cubes dans un tableau
-// test : descente verticale
-// pour chaque cube, vérifier à chaque étape si il n'y a pas de cube en dessous (ref : tableau)
-// si oui il s'arrête là, sinon il continue, max y : 855
 
-// pour générer de nouveaux blocs automatiquement : regarder les deux condition (855 / Y)
-// et si une des deux est remplit, on fais nos trucs, on laisse 2 sec et on genere un nouveau block
+// pour générer de nouveaux blocs automatiquement : regarder les deux conditions (855 / Y)
+// et si une des deux est rempli, on fait nos trucs, on laisse 2 sec et on genere un nouveau block
 
-//faire une méthode qui quand le block est "bloqué" il ne peux plus bouger
-
-
-//quand else (deplacement vers le bas) mettre isMovable à false, si isMovable == peut bouger, sinon peut pas
 
 
 
