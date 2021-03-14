@@ -72,6 +72,9 @@ public class Tetriminos {
 	}
 
 	public boolean isMovable() {
+		if (!isMovable) {
+			new Tetriminos(Color.red, 50, 50, 100, 0);
+		}
 		return isMovable;
 	}
 

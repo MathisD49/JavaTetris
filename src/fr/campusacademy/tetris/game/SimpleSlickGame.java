@@ -47,8 +47,23 @@ public class SimpleSlickGame extends BasicGame
 		
 		// détermination du bloc le plus haut dans la liste "blocks"
 		for(Tetriminos tetri : blocks) {
-			if (tetri.getY() < highestBlock.getY() && tetri.getX() == square.getX()) {
-				highestBlock = tetri;
+//			if (tetri.getX() == square.getX()) {
+//				System.out.println(tetri.getX());
+//				if(tetri.getY() < highestBlock.getY()) {
+//					highestBlock = tetri;
+//				}
+//				
+//			}
+			
+			if(highestBlock.getX() == square.getX()) {
+				if(tetri.getX() == square.getX() && tetri.getY() < highestBlock.getY()) {
+					highestBlock = tetri;
+				}
+			}else {
+				highestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
+				if(tetri.getX() == square.getX() && tetri.getY() < highestBlock.getY()) {
+					highestBlock = tetri;
+				}
 			}
 		}
 		
@@ -56,20 +71,18 @@ public class SimpleSlickGame extends BasicGame
 		if(square.isMovable()) {
 			if (square.getY() != highestBlock.getY()-50 && square.getX() == highestBlock.getX() && square.getY() != 850) {
 				square.setY(square.getY() + 50);
-				System.out.println("y != | x ==");
 			} else if (square.getY() != highestBlock.getY()-50 && square.getX() != highestBlock.getX() && square.getY() != 850){
 				square.setY(square.getY() + 50);
-				System.out.println("y != | x !=");
 			} else if(square.getY() == highestBlock.getY()-50 && square.getX() != highestBlock.getX() && square.getY() != 850) {
 				square.setY(square.getY() + 50);
-				System.out.println("y == | x !=");
 			} else {
 				square.setMovable(false);
+				blocks.add(square);
 			}
 		}
 		
-		
-		
+		System.out.println("highestBlock : " + highestBlock.getX() + " | " + highestBlock.getY());
+		System.out.println("square : " + square.getX() + " | " + square.getY() + "\n");
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_G) && square.isMovable() && square.getX()-50 != -50) {
 			
@@ -87,19 +100,29 @@ public class SimpleSlickGame extends BasicGame
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{
+		for (Tetriminos tetri: blocks) {
+			tetri.setColor(Color.blue);
+			tetri.createSquare(g);
+		}
+		
 		g.drawString("x : " + square.getX() + " | y : " + square.getY(), 100, 100);
 		square.createSquare(g);
 		
-		g.drawString("x : " + square2.getX() + " | y : " + square2.getY(), 120, 120);
-		square2.createSquare(g);
-		blocks.add(square2);
-		g.drawString("coordinate : " + Ycoordinate[0], 140, 140);
-		
-		square3.createSquare(g);
-		blocks.add(square3);
+//		g.drawString("x : " + square2.getX() + " | y : " + square2.getY(), 120, 120);
+//		square2.createSquare(g);
+//		blocks.add(square2);
+//		g.drawString("coordinate : " + Ycoordinate[0], 140, 140);
+//		
+//		square3.createSquare(g);
+//		blocks.add(square3);
 		
 		
 		g.setColor(Color.white);
+		
+		if(!square.isMovable()) {
+			square = new Tetriminos(Color.red, 50, 50, 100, 0);
+			square.createSquare(g);
+		}
 		
 		
 		// quadrillage
@@ -116,6 +139,8 @@ public class SimpleSlickGame extends BasicGame
 		
 	}
 	
+	
+	
 	@Override
 	public void keyReleased(int key, char c) {
 		if (Input.KEY_ESCAPE == key) {
@@ -129,6 +154,8 @@ public class SimpleSlickGame extends BasicGame
 // pour générer de nouveaux blocs automatiquement : regarder les deux conditions (855 / Y)
 // et si une des deux est rempli, on fait nos trucs, on laisse 2 sec et on genere un nouveau block
 
-
+// faire une tableau qui contient les coordonnées de toutes les pièces qui le génèrera à chaque update
+// quand une pièce isMovable(false) on l'ajoute au tableau
+// la variable square aura un autre bloc
 
 
