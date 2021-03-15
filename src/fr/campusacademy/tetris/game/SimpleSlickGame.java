@@ -19,9 +19,10 @@ public class SimpleSlickGame extends BasicGame
 	private final int size = 50;
 	private final ArrayList<Tetriminos> blocks = new ArrayList<>();
 	
-	LineTetriminos square = new LineTetriminos();
-	//Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 100, 850);
-	//Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
+	Tetriminos square = new Tetriminos(Color.blue, 50, 50, 100, 850);
+	Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 150, 850);
+	Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
+	Tetriminos square4 = new Tetriminos(Color.blue, 50, 50, 200, 850);
 	
 	Tetriminos highestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
 	
@@ -106,8 +107,7 @@ public class SimpleSlickGame extends BasicGame
 		}
 		
 		g.drawString("x : " + square.getX() + " | y : " + square.getY(), 100, 100);
-		square.lineCreate(g);
-		System.out.println(square.getBloc1().getX());
+		square.createSquare(g);
 		
 //		g.drawString("x : " + square2.getX() + " | y : " + square2.getY(), 120, 120);
 //		square2.createSquare(g);
@@ -121,8 +121,8 @@ public class SimpleSlickGame extends BasicGame
 		g.setColor(Color.white);
 		
 		if(!square.isMovable()) {
-			square = new LineTetriminos();
-			square.lineCreate(g);
+			square = new Tetriminos();
+			square.createSquare(g);
 		}
 		
 		

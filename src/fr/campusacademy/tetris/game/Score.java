@@ -3,12 +3,12 @@ package fr.campusacademy.tetris.game;
 public class Score {
 	private int point;
 	private int level;
-	private int nbLign;
+	private int nbLine;
 
 	public Score() {
 		point = 0;
 		level = 1;
-		nbLign = 0;
+		nbLine = 0;
 	}
 
 	public int getPoint() {
@@ -28,32 +28,32 @@ public class Score {
 	}
 
 	public int getNbLigne() {
-		return nbLign;
+		return nbLine;
 	}
 
 	public void setNbLigne(int nbLign) {
-		this.nbLign = nbLign;
+		this.nbLine = nbLign;
 	}
 
-	public void calculerScore(int nblignsup) {
-		nbLign += nblignsup;
-		if (nbLign % 10 == 0 && nbLign != 0) {
+	public void calculerScore(int nbLineDel) {
+		nbLine += nbLineDel;
+		if (nbLine % 10 == 0 && nbLine != 0) {
 			level++;
-			nbLign = 0;
+			nbLine = 0;
 		}
 
-		switch (nblignsup) {
+		switch (nbLineDel) {
 		case 1:
-			point += 40 * level;
+			point += 40 * level + 1;
 			break;
 		case 2:
-			point += 100 * level;
+			point += 100 * level + 1;
 			break;
 		case 3:
-			point += 300 * level;
+			point += 300 * level + 1;
 			break;
 		case 4:
-			point += 1200 * level;
+			point += 1200 * level + 1;
 			break;
 		}
 
@@ -61,6 +61,6 @@ public class Score {
 
 	@Override
 	public String toString() {
-		return "nbligne : " + nbLign + "\n" + "points : " + point + "\nniveau : " + level + "\n\n";
+		return "Ligne : " + nbLine + "\n" + "Points : " + point + "\nNiveau : " + level + "\n\n";
 	}
 }
