@@ -47,15 +47,7 @@ public class SimpleSlickGame extends BasicGame
 		// création d'une variable pour accueillir le bloc le plus haut sur le même axe X que la pièce 
 		
 		// détermination du bloc le plus haut dans la liste "blocks"
-		for(Tetriminos tetri : blocks) {
-//			if (tetri.getX() == square.getX()) {
-//				System.out.println(tetri.getX());
-//				if(tetri.getY() < highestBlock.getY()) {
-//					highestBlock = tetri;
-//				}
-//				
-//			}
-			
+		for(Tetriminos tetri : blocks) {			
 			if(highestBlock.getX() == square.getX()) {
 				if(tetri.getX() == square.getX() && tetri.getY() < highestBlock.getY()) {
 					highestBlock = tetri;
@@ -67,6 +59,9 @@ public class SimpleSlickGame extends BasicGame
 				}
 			}
 		}
+		
+		
+		
 		
 		// vérification qu'il n'y a pas de bloc sur sa route ou qu'il arrive au bout (si oui il avance)
 		if(square.isMovable()) {
@@ -82,19 +77,36 @@ public class SimpleSlickGame extends BasicGame
 			}
 		}
 		
-		System.out.println("highestBlock : " + highestBlock.getX() + " | " + highestBlock.getY());
-		System.out.println("square : " + square.getX() + " | " + square.getY() + "\n");
+		
+		
+		
+//		System.out.println("highestBlock : " + highestBlock.getX() + " | " + highestBlock.getY());
+//		System.out.println("square : " + square.getX() + " | " + square.getY() + "\n");
+		
+		// les deux autres conditions : && square.isMovable() && square.getX()-50 != -50 (obstacle + cote)
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_G) && square.isMovable() && square.getX()-50 != -50) {
 			
 			square.setX(square.getX() - 50);
 		}
 		
-		if (gc.getInput().isKeyPressed(Input.KEY_H) && square.isMovable() && square.getX()+50 != 500) {
+		if (gc.getInput().isKeyPressed(Input.KEY_H)) {
 			square.setX(square.getX() + 50);
 			
-			
 		}
+//		
+//		if (gc.getInput().isKeyPressed(Input.KEY_F)) {
+//			//squareline.rotate(squareline.isVertical());
+//			
+//		}
+//		
+//		if (gc.getInput().isKeyPressed(Input.KEY_J)) {
+//			squareline.rotateRight(squareline.isVertical());
+//			
+//		}
+//		
+//		squareline.goDown();
+		
 		
 	}
 
@@ -103,26 +115,27 @@ public class SimpleSlickGame extends BasicGame
 	{
 		for (Tetriminos tetri: blocks) {
 			tetri.setColor(Color.blue);
-			tetri.createSquare(g);
+			tetri.createItem(g);
 		}
 		
-		g.drawString("x : " + square.getX() + " | y : " + square.getY(), 100, 100);
-		square.createSquare(g);
+		//g.drawString("x : " + square.getX() + " | y : " + square.getY(), 100, 100);
+		//g.drawString("x : " + squareline.getBloc4().getX() + " | y : " + squareline.getBloc4().getY(), 100, 100);
+		square.createItem(g);
 		
 //		g.drawString("x : " + square2.getX() + " | y : " + square2.getY(), 120, 120);
-//		square2.createSquare(g);
+//		square2.createItem(g);
 //		blocks.add(square2);
 //		g.drawString("coordinate : " + Ycoordinate[0], 140, 140);
 //		
-//		square3.createSquare(g);
+//		square3.createItem(g);
 //		blocks.add(square3);
 		
 		
 		g.setColor(Color.white);
 		
 		if(!square.isMovable()) {
-			square = new Tetriminos();
-			square.createSquare(g);
+			square = new Tetriminos(Color.red, 50, 50, 100, 0);
+			square.createItem(g);
 		}
 		
 		
@@ -160,3 +173,5 @@ public class SimpleSlickGame extends BasicGame
 // la variable square aura un autre bloc
 
 // pour chaque pièce creer une methode pour aller vers le bas (+conditions) et bouger etc et les appeler ensuite dans le code ici
+
+//pour la descente des pieces quand on supprime une ligne dire à tous les blocs du dessus de descendre de 50 (ou 50*ligne_supprime)
