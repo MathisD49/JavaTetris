@@ -1,6 +1,5 @@
 package fr.campusacademy.tetris.game;
 
-<<<<<<< HEAD
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
@@ -22,13 +21,4 @@ public class TetriminosT {
 		bloc3.createItem(g);
 		bloc4.createItem(g);
 	}
-=======
-public class TetriminosT {
-	public int[][] TetriminosT = {
-			{0,5,0,0,0,5,5,0,0,5,0,0,0,0,0,0},
-			{0,0,0,0,0,0,5,0,0,5,5,5,0,0,0,0},
-			{0,0,0,5,0,0,5,5,0,0,0,5,0,0,0,0},
-			{0,5,5,5,0,0,5,0,0,0,0,0,0,0,0,0}
-			};
->>>>>>> bfc53da067c587fc0549395a41dfed8e13e1b6a4
 }

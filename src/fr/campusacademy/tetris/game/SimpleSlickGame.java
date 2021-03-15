@@ -19,10 +19,13 @@ public class SimpleSlickGame extends BasicGame
 	private final int size = 50;
 	private final ArrayList<Tetriminos> blocks = new ArrayList<>();
 	
-	Tetriminos square = new Tetriminos(Color.blue, 50, 50, 100, 850);
-	Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 150, 850);
-	Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
-	Tetriminos square4 = new Tetriminos(Color.blue, 50, 50, 200, 850);
+	// à remettre pour l'exemple
+//	Tetriminos square = new Tetriminos(Color.blue, 50, 50, 100, 850);
+//	Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 150, 850);
+	LineTetriminos squareline = new LineTetriminos();
+	
+//	Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
+//	Tetriminos square4 = new Tetriminos(Color.blue, 50, 50, 200, 850);
 	
 	Tetriminos highestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
 	
@@ -47,35 +50,38 @@ public class SimpleSlickGame extends BasicGame
 		// création d'une variable pour accueillir le bloc le plus haut sur le même axe X que la pièce 
 		
 		// détermination du bloc le plus haut dans la liste "blocks"
-		for(Tetriminos tetri : blocks) {			
-			if(highestBlock.getX() == square.getX()) {
-				if(tetri.getX() == square.getX() && tetri.getY() < highestBlock.getY()) {
-					highestBlock = tetri;
-				}
-			}else {
-				highestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
-				if(tetri.getX() == square.getX() && tetri.getY() < highestBlock.getY()) {
-					highestBlock = tetri;
-				}
-			}
-		}
+		
+		// à remettre pour l'exemple
+//		for(Tetriminos tetri : blocks) {			
+//			if(highestBlock.getX() == square.getX()) {
+//				if(tetri.getX() == square.getX() && tetri.getY() < highestBlock.getY()) {
+//					highestBlock = tetri;
+//				}
+//			}else {
+//				highestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
+//				if(tetri.getX() == square.getX() && tetri.getY() < highestBlock.getY()) {
+//					highestBlock = tetri;
+//				}
+//			}
+//		}
 		
 		
 		
 		
 		// vérification qu'il n'y a pas de bloc sur sa route ou qu'il arrive au bout (si oui il avance)
-		if(square.isMovable()) {
-			if (square.getY() != highestBlock.getY()-50 && square.getX() == highestBlock.getX() && square.getY() != 850) {
-				square.setY(square.getY() + 50);
-			} else if (square.getY() != highestBlock.getY()-50 && square.getX() != highestBlock.getX() && square.getY() != 850){
-				square.setY(square.getY() + 50);
-			} else if(square.getY() == highestBlock.getY()-50 && square.getX() != highestBlock.getX() && square.getY() != 850) {
-				square.setY(square.getY() + 50);
-			} else {
-				square.setMovable(false);
-				blocks.add(square);
-			}
-		}
+		// à remettre pour l'exemple
+//		if(square.isMovable()) {
+//			if (square.getY() != highestBlock.getY()-50 && square.getX() == highestBlock.getX() && square.getY() != 850) {
+//				square.setY(square.getY() + 50);
+//			} else if (square.getY() != highestBlock.getY()-50 && square.getX() != highestBlock.getX() && square.getY() != 850){
+//				square.setY(square.getY() + 50);
+//			} else if(square.getY() == highestBlock.getY()-50 && square.getX() != highestBlock.getX() && square.getY() != 850) {
+//				square.setY(square.getY() + 50);
+//			} else {
+//				square.setMovable(false);
+//				blocks.add(square);
+//			}
+//		}
 		
 		
 		
@@ -85,27 +91,29 @@ public class SimpleSlickGame extends BasicGame
 		
 		// les deux autres conditions : && square.isMovable() && square.getX()-50 != -50 (obstacle + cote)
 		
-		if (gc.getInput().isKeyPressed(Input.KEY_G) && square.isMovable() && square.getX()-50 != -50) {
-			
-			square.setX(square.getX() - 50);
+		if (gc.getInput().isKeyPressed(Input.KEY_G)) {
+			//à remettre pour l'exemple
+			//square.setX(square.getX() - 50);
+			squareline.goLeft();
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_H)) {
-			square.setX(square.getX() + 50);
-			
+			//à remettre pour l'exemple
+			//square.setX(square.getX() + 50);
+			squareline.goRight();
 		}
 //		
-//		if (gc.getInput().isKeyPressed(Input.KEY_F)) {
-//			//squareline.rotate(squareline.isVertical());
-//			
-//		}
-//		
-//		if (gc.getInput().isKeyPressed(Input.KEY_J)) {
-//			squareline.rotateRight(squareline.isVertical());
-//			
-//		}
-//		
-//		squareline.goDown();
+		if (gc.getInput().isKeyPressed(Input.KEY_F)) {
+			//squareline.rotate(squareline.isVertical());
+			squareline.rotateRight(squareline.isVertical());
+		}
+		
+		if (gc.getInput().isKeyPressed(Input.KEY_J)) {
+			squareline.rotateRight(squareline.isVertical());
+			
+		}
+		
+		squareline.goDown();
 		
 		
 	}
@@ -120,7 +128,11 @@ public class SimpleSlickGame extends BasicGame
 		
 		//g.drawString("x : " + square.getX() + " | y : " + square.getY(), 100, 100);
 		//g.drawString("x : " + squareline.getBloc4().getX() + " | y : " + squareline.getBloc4().getY(), 100, 100);
-		square.createItem(g);
+		
+		//à remettre pour l'exemple
+		//square.createItem(g);
+		
+		squareline.createItem(g);
 		
 //		g.drawString("x : " + square2.getX() + " | y : " + square2.getY(), 120, 120);
 //		square2.createItem(g);
@@ -133,10 +145,11 @@ public class SimpleSlickGame extends BasicGame
 		
 		g.setColor(Color.white);
 		
-		if(!square.isMovable()) {
-			square = new Tetriminos(Color.red, 50, 50, 100, 0);
-			square.createItem(g);
-		}
+		// à remettre pour l'exemple
+//		if(!square.isMovable()) {
+//			square = new Tetriminos(Color.red, 50, 50, 100, 0);
+//			square.createItem(g);
+//		}
 		
 		
 		// quadrillage

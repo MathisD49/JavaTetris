@@ -73,7 +73,7 @@ public class LineTetriminos extends Tetriminos {
 	}
 	
 	public void rotateLeft(boolean vertical) {
-		
+		this.rotateRight(vertical);
 	}
 	
 	
