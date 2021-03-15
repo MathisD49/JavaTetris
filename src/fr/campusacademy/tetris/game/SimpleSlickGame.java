@@ -1,9 +1,9 @@
 package fr.campusacademy.tetris.game;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.newdawn.slick.AppGameContainer;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+//import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
