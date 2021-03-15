@@ -19,9 +19,9 @@ public class SimpleSlickGame extends BasicGame
 	private final int size = 50;
 	private final ArrayList<Tetriminos> blocks = new ArrayList<>();
 	
-	Tetriminos square = new Tetriminos(Color.red, 50, 50, 100, 0);
-	Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 100, 850);
-	Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
+	LineTetriminos square = new LineTetriminos();
+	//Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 100, 850);
+	//Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
 	
 	Tetriminos highestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
 	
@@ -106,7 +106,8 @@ public class SimpleSlickGame extends BasicGame
 		}
 		
 		g.drawString("x : " + square.getX() + " | y : " + square.getY(), 100, 100);
-		square.createSquare(g);
+		square.lineCreate(g);
+		System.out.println(square.getBloc1().getX());
 		
 //		g.drawString("x : " + square2.getX() + " | y : " + square2.getY(), 120, 120);
 //		square2.createSquare(g);
@@ -120,8 +121,8 @@ public class SimpleSlickGame extends BasicGame
 		g.setColor(Color.white);
 		
 		if(!square.isMovable()) {
-			square = new Tetriminos(Color.red, 50, 50, 100, 0);
-			square.createSquare(g);
+			square = new LineTetriminos();
+			square.lineCreate(g);
 		}
 		
 		
@@ -158,4 +159,4 @@ public class SimpleSlickGame extends BasicGame
 // quand une pièce isMovable(false) on l'ajoute au tableau
 // la variable square aura un autre bloc
 
-
+// pour chaque pièce creer une methode pour aller vers le bas (+conditions) et bouger etc et les appeler ensuite dans le code ici
