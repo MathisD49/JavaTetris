@@ -129,9 +129,5 @@ public class LineTetriminos extends Tetriminos {
 	public String toString() {
 		return "LineTetriminos [color=" + color + ", bloc1=" + bloc1 + ", bloc2=" + bloc2 + ", bloc3=" + bloc3
 				+ ", bloc4=" + bloc4 + "]";
-	}
-	
-	
-	
-	
+	}	
 }
