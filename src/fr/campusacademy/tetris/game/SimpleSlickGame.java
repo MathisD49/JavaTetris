@@ -1,9 +1,9 @@
 package fr.campusacademy.tetris.game;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.newdawn.slick.AppGameContainer;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+//import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -19,11 +19,10 @@ public class SimpleSlickGame extends BasicGame
 	private final int size = 50;
 	private final ArrayList<Tetriminos> blocks = new ArrayList<>();
 	
-	Tetriminos square = new Tetriminos(Color.red, 50, 50, 100, 0);
-	//LineTetriminos squareline = new LineTetriminos();
-	//TetriminosL squareline = new TetriminosL();
-	//Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 100, 850);
-	//Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
+	Tetriminos square = new Tetriminos(Color.blue, 50, 50, 100, 850);
+	Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 150, 850);
+	Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
+	Tetriminos square4 = new Tetriminos(Color.blue, 50, 50, 200, 850);
 	
 	Tetriminos highestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
 	
