@@ -61,6 +61,6 @@ public class Score {
 
 	@Override
 	public String toString() {
-		return "Ligne : " + nbLine + "\n" + "Points : " + point + "\nNiveau : " + level + "\n\n";
+		return "Lignes : " + nbLine + "\n" + "Points : " + point + "\nNiveau : " + level + "\n\n";
 	}
 }
