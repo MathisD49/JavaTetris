@@ -6,20 +6,20 @@ import org.newdawn.slick.Graphics;
 public class TetriminosS extends Tetriminos{
 	private Color color;
 	
-	private Tetriminos bloc1 = new Tetriminos(Color.blue, 50, 50, 100, 50);
-	private Tetriminos bloc2 = new Tetriminos(Color.blue, 50, 50, 150, 50);
-	private Tetriminos bloc3 = new Tetriminos(Color.blue, 50, 50, 150, 0);
-	private Tetriminos bloc4 = new Tetriminos(Color.blue, 50, 50, 200, 0);
+	private Tetriminos block1 = new Tetriminos(Color.blue, 50, 50, 100, 50);
+	private Tetriminos block2 = new Tetriminos(Color.blue, 50, 50, 150, 50);
+	private Tetriminos block3 = new Tetriminos(Color.blue, 50, 50, 150, 0);
+	private Tetriminos block4 = new Tetriminos(Color.blue, 50, 50, 200, 0);
 	
 	public TetriminosS() {
 		
 	}
 	
 	public void createItem(Graphics g) {
-		bloc1.createItem(g);
-		bloc2.createItem(g);
-		bloc3.createItem(g);
-		bloc4.createItem(g);
+		block1.createItem(g);
+		block2.createItem(g);
+		block3.createItem(g);
+		block4.createItem(g);
 	}
 }
 
