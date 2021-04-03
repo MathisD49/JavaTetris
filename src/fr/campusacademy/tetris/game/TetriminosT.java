@@ -13,10 +13,10 @@ public class TetriminosT extends Tetriminos{
 	private int indexRotate = 1;
 	
 	
-	private Tetriminos bloc1 = new Tetriminos(Color.red, 50, 50, 100, 50);
-	private Tetriminos bloc2 = new Tetriminos(Color.blue, 50, 50, 150, 50);
-	private Tetriminos bloc3 = new Tetriminos(Color.pink, 50, 50, 150, 0);
-	private Tetriminos bloc4 = new Tetriminos(Color.green, 50, 50, 200, 50);
+	private Tetriminos bloc1 = new Tetriminos(Color.red, 50, 50, 100, 50); // C
+	private Tetriminos bloc2 = new Tetriminos(Color.blue, 50, 50, 150, 50); // A
+	private Tetriminos bloc3 = new Tetriminos(Color.pink, 50, 50, 150, 0); // B
+	private Tetriminos bloc4 = new Tetriminos(Color.green, 50, 50, 200, 50); // D
 	
 	public TetriminosT() {
 		
@@ -54,37 +54,118 @@ public class TetriminosT extends Tetriminos{
 		}
 		
 		// permet de tourner la pièce à droite
-		public void rotateRight(boolean vertical) {
-			if(vertical) {
-				bloc1.setX(bloc1.getX() - 150);
-				bloc1.setY(bloc1.getY() + 150);
+		public void rotateRight() {			
+			if(indexRotate == 1) {
+				bloc3.setX(bloc3.getX() + 50);
+				bloc3.setY(bloc3.getY() + 50);
 				
-				bloc2.setX(bloc2.getX() - 100);
-				bloc2.setY(bloc2.getY() + 100);
+				bloc1.setX(bloc1.getX() + 50);
+				bloc1.setY(bloc1.getY() - 50);
 				
+				bloc4.setX(bloc4.getX() - 50);
+				bloc4.setY(bloc4.getY() + 50);
+				
+				indexRotate = 2;
+				
+				
+				
+			} else if (indexRotate == 2) {
 				bloc3.setX(bloc3.getX() - 50);
 				bloc3.setY(bloc3.getY() + 50);
 				
-				this.setVertical(false);
+				bloc1.setX(bloc1.getX() + 50);
+				bloc1.setY(bloc1.getY() + 50);
 				
-			} else {
-				bloc1.setX(bloc1.getX() + 150);
-				bloc1.setY(bloc1.getY() - 150);
+				bloc4.setX(bloc4.getX() - 50);
+				bloc4.setY(bloc4.getY() - 50);
 				
-				bloc2.setX(bloc2.getX() + 100);
-				bloc2.setY(bloc2.getY() - 100);
+				indexRotate = 3;
 				
+			} else if (indexRotate == 3) {
+				bloc3.setX(bloc3.getX() - 50);
+				bloc3.setY(bloc3.getY() - 50);
+				
+				bloc1.setX(bloc1.getX() - 50);
+				bloc1.setY(bloc1.getY() + 50);
+				
+				bloc4.setX(bloc4.getX() + 50);
+				bloc4.setY(bloc4.getY() - 50);
+				
+				indexRotate = 4;
+				
+			} else if (indexRotate == 4) {
 				bloc3.setX(bloc3.getX() + 50);
 				bloc3.setY(bloc3.getY() - 50);
-				this.setVertical(true);
+				
+				bloc1.setX(bloc1.getX() - 50);
+				bloc1.setY(bloc1.getY() - 50);
+				
+				bloc4.setX(bloc4.getX() + 50);
+				bloc4.setY(bloc4.getY() + 50);
+				
+				indexRotate = 1;
+				
+			} else {
+				System.out.println("erreur dans la rotation de la pièce");
 			}
 			
 		}
 		
 		// permet de tourner la pièce à gauche
-		public void rotateLeft(boolean vertical) {
-			// étant donné qu'ici la pièce est une ligne, la rotation à droite et à gauche est la même
-			this.rotateRight(vertical);
+		public void rotateLeft() {
+			if(indexRotate == 1) {
+				bloc3.setX(bloc3.getX() - 50);
+				bloc3.setY(bloc3.getY() + 50);
+				
+				bloc1.setX(bloc1.getX() + 50);
+				bloc1.setY(bloc1.getY() + 50);
+				
+				bloc4.setX(bloc4.getX() - 50);
+				bloc4.setY(bloc4.getY() - 50);
+				
+				indexRotate = 4;
+				
+				
+				
+			} else if (indexRotate == 2) {
+				bloc3.setX(bloc3.getX() - 50);
+				bloc3.setY(bloc3.getY() - 50);
+				
+				bloc1.setX(bloc1.getX() - 50);
+				bloc1.setY(bloc1.getY() + 50);
+				
+				bloc4.setX(bloc4.getX() + 50);
+				bloc4.setY(bloc4.getY() - 50);
+				
+				indexRotate = 1;
+				
+			} else if (indexRotate == 3) {
+				bloc3.setX(bloc3.getX() + 50);
+				bloc3.setY(bloc3.getY() - 50);
+				
+				bloc1.setX(bloc1.getX() - 50);
+				bloc1.setY(bloc1.getY() - 50);
+				
+				bloc4.setX(bloc4.getX() + 50);
+				bloc4.setY(bloc4.getY() + 50);
+				
+				indexRotate = 2;
+				
+			} else if (indexRotate == 4) {
+				bloc3.setX(bloc3.getX() + 50);
+				bloc3.setY(bloc3.getY() + 50);
+				
+				bloc1.setX(bloc1.getX() + 50);
+				bloc1.setY(bloc1.getY() - 50);
+				
+				bloc4.setX(bloc4.getX() - 50);
+				bloc4.setY(bloc4.getY() + 50);
+				
+				indexRotate = 3;
+				
+			} else {
+				System.out.println("erreur dans la rotation de la pièce");
+			}
 		}
 		
 		

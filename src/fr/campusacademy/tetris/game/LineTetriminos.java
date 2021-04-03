@@ -170,5 +170,7 @@ public class LineTetriminos extends Tetriminos {
 	}	
 }
 
+// essayer d'améliorer la rotation de la pièce (plus au centre)
+
 // creer une position de base pour les pièces, creer une variable int de 1 à 4
 // et en fonction du nombre (position) et de la rotation, la pièce tourneras differemment (voir feuille)

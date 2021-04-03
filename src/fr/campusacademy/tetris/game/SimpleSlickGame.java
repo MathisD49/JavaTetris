@@ -23,7 +23,7 @@ public class SimpleSlickGame extends BasicGame
 	// à remettre pour l'exemple
 	Tetriminos square = new Tetriminos(Color.blue, 50, 50, 150, 850);
 	Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 200, 800);
-	LineTetriminos squareline = new LineTetriminos();
+	TetriminosT squareline = new TetriminosT();
 	
 	Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
 //	Tetriminos square4 = new Tetriminos(Color.blue, 50, 50, 200, 850);
@@ -185,11 +185,11 @@ public class SimpleSlickGame extends BasicGame
 //		
 		if (gc.getInput().isKeyPressed(Input.KEY_F)) {
 			//squareline.rotate(squareline.isVertical());
-			squareline.rotateRight(squareline.isVertical());
+			squareline.rotateLeft();
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_J)) {
-			squareline.rotateRight(squareline.isVertical());
+			squareline.rotateRight();
 			
 		}
 		
@@ -252,6 +252,13 @@ public class SimpleSlickGame extends BasicGame
 	}
 }
 
+
+// TODO :
+// ATTENTION /!\
+// pour la rotation changer isVertical de Line avec une index (comme T)
+// sinon ça posera problème lors de l'appel
+// getter pour indexRotate et lui donner en paramètre
+// A VOIR PLUS TARD
 
 
 // pour générer de nouveaux blocs automatiquement : regarder les deux conditions (855 / Y)
