@@ -3,7 +3,7 @@ package fr.campusacademy.tetris.game;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
-public class TetriminosL {
+public class TetriminosL extends Tetriminos{
 	private Color color;
 	
 	private Tetriminos bloc1 = new Tetriminos(Color.blue, 50, 50, 100, 0);

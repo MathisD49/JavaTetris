@@ -8,6 +8,8 @@ public class LineTetriminos extends Tetriminos {
 	private Color color;
 	private boolean isVertical = false;
 	
+	private boolean isMovable = true;
+	
 	private Tetriminos bloc1 = new Tetriminos(Color.red, 50, 50, 100, 0);
 	private Tetriminos bloc2 = new Tetriminos(Color.blue, 50, 50, 150, 0);
 	private Tetriminos bloc3 = new Tetriminos(Color.pink, 50, 50, 200, 0);
@@ -17,6 +19,7 @@ public class LineTetriminos extends Tetriminos {
 		
 	}
 	
+	// fonction à appeler pour creer visuellement la pièce
 	public void createItem(Graphics g) {
 		bloc1.createItem(g);
 		bloc2.createItem(g);
@@ -24,6 +27,7 @@ public class LineTetriminos extends Tetriminos {
 		bloc4.createItem(g);
 	}
 	
+	// permet de faire déscendre la pièce
 	public void goDown() {
 		bloc1.setY(bloc1.getY() + 50);
 		bloc2.setY(bloc2.getY() + 50);
@@ -31,6 +35,7 @@ public class LineTetriminos extends Tetriminos {
 		bloc4.setY(bloc4.getY() + 50);
 	}
 	
+	// permet de déplacer la pièce à droite
 	public void goRight() {
 		bloc1.setX(bloc1.getX() + 50);
 		bloc2.setX(bloc2.getX() + 50);
@@ -38,6 +43,7 @@ public class LineTetriminos extends Tetriminos {
 		bloc4.setX(bloc4.getX() + 50);
 	}
 	
+	// permet de déplacer la pièce à gauche
 	public void goLeft() {
 		bloc1.setX(bloc1.getX() - 50);
 		bloc2.setX(bloc2.getX() - 50);
@@ -45,6 +51,7 @@ public class LineTetriminos extends Tetriminos {
 		bloc4.setX(bloc4.getX() - 50);
 	}
 	
+	// permet de tourner la pièce à droite
 	public void rotateRight(boolean vertical) {
 		if(vertical) {
 			bloc1.setX(bloc1.getX() - 150);
@@ -72,7 +79,9 @@ public class LineTetriminos extends Tetriminos {
 		
 	}
 	
+	// permet de tourner la pièce à gauche
 	public void rotateLeft(boolean vertical) {
+		// étant donné qu'ici la pièce est une ligne, la rotation à droite et à gauche est la même
 		this.rotateRight(vertical);
 	}
 	
@@ -117,12 +126,41 @@ public class LineTetriminos extends Tetriminos {
 		this.bloc4 = bloc4;
 	}
 
+	// permet de savoir si la pièce est verticale (tournée) ou non
 	public boolean isVertical() {
 		return isVertical;
 	}
 
+	// permet de définir si la pièce est verticale (tournée) ou non
 	public void setVertical(boolean isVertical) {
 		this.isVertical = isVertical;
+	}
+
+	public boolean isMovable() {
+		return isMovable;
+	}
+	
+	// pour savoir si la pièce est en mouvement, on met en mouvement ou non tous les Tetriminos de notre pièces
+	public void setMovable(boolean isMovable) {
+		if(isMovable) {
+			bloc1.setMovable(true);
+			bloc2.setMovable(true);
+			bloc3.setMovable(true);
+			bloc4.setMovable(true);
+			this.isMovable = isMovable;
+		} else {
+			bloc1.setMovable(false);
+			bloc2.setMovable(false);
+			bloc3.setMovable(false);
+			bloc4.setMovable(false);
+			this.isMovable = isMovable;
+		}
+	}
+	
+	// renvoie un tableau avec les informations sur tous les blocs de notre pièce
+	public Tetriminos[] getBlocks() {
+		Tetriminos[] myBlocks = {bloc1, bloc2, bloc3, bloc4};
+		return myBlocks;
 	}
 
 	@Override
@@ -131,3 +169,6 @@ public class LineTetriminos extends Tetriminos {
 				+ ", bloc4=" + bloc4 + "]";
 	}	
 }
+
+// creer une position de base pour les pièces, creer une variable int de 1 à 4
+// et en fonction du nombre (position) et de la rotation, la pièce tourneras differemment (voir feuille)
