@@ -23,7 +23,7 @@ public class SimpleSlickGame extends BasicGame
 	// à remettre pour l'exemple
 	Tetriminos square = new Tetriminos(Color.blue, 50, 50, 150, 850);
 	Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 200, 800);
-	TetriminosT squareline = new TetriminosT();
+	TetriminosS squareline = new TetriminosS();
 	
 	Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
 //	Tetriminos square4 = new Tetriminos(Color.blue, 50, 50, 200, 850);
@@ -263,6 +263,7 @@ public class SimpleSlickGame extends BasicGame
 
 // pour générer de nouveaux blocs automatiquement : regarder les deux conditions (855 / Y)
 // et si une des deux est rempli, on fait nos trucs, on laisse 2 sec et on genere un nouveau block
+// utiliser instanceOf ou creer une nouvelle classe pour générer un nouveau bloc
 
 // faire une tableau qui contient les coordonnées de toutes les pièces qui le génèrera à chaque update
 // quand une pièce isMovable(false) on l'ajoute au tableau
