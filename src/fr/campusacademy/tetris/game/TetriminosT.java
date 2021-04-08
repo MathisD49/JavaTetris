@@ -54,8 +54,8 @@ public class TetriminosT extends Tetriminos{
 	}
 	
 	// permet de tourner la pièce à droite
-	public void rotateRight() {			
-		if(indexRotate == 1) {
+	public void rotateRight(int position) {			
+		if(position == 1) {
 			bloc3.setX(bloc3.getX() + 50);
 			bloc3.setY(bloc3.getY() + 50);
 			
@@ -65,11 +65,11 @@ public class TetriminosT extends Tetriminos{
 			bloc4.setX(bloc4.getX() - 50);
 			bloc4.setY(bloc4.getY() + 50);
 			
-			indexRotate = 2;
+			this.setIndexRotate(2);
 			
 			
 			
-		} else if (indexRotate == 2) {
+		} else if (position == 2) {
 			bloc3.setX(bloc3.getX() - 50);
 			bloc3.setY(bloc3.getY() + 50);
 			
@@ -79,9 +79,9 @@ public class TetriminosT extends Tetriminos{
 			bloc4.setX(bloc4.getX() - 50);
 			bloc4.setY(bloc4.getY() - 50);
 			
-			indexRotate = 3;
+			this.setIndexRotate(3);
 			
-		} else if (indexRotate == 3) {
+		} else if (position == 3) {
 			bloc3.setX(bloc3.getX() - 50);
 			bloc3.setY(bloc3.getY() - 50);
 			
@@ -91,9 +91,9 @@ public class TetriminosT extends Tetriminos{
 			bloc4.setX(bloc4.getX() + 50);
 			bloc4.setY(bloc4.getY() - 50);
 			
-			indexRotate = 4;
+			this.setIndexRotate(4);
 			
-		} else if (indexRotate == 4) {
+		} else if (position == 4) {
 			bloc3.setX(bloc3.getX() + 50);
 			bloc3.setY(bloc3.getY() - 50);
 			
@@ -103,7 +103,7 @@ public class TetriminosT extends Tetriminos{
 			bloc4.setX(bloc4.getX() + 50);
 			bloc4.setY(bloc4.getY() + 50);
 			
-			indexRotate = 1;
+			this.setIndexRotate(1);
 			
 		} else {
 			System.out.println("erreur dans la rotation de la pièce");
@@ -112,8 +112,8 @@ public class TetriminosT extends Tetriminos{
 	}
 	
 	// permet de tourner la pièce à gauche
-	public void rotateLeft() {
-		if(indexRotate == 1) {
+	public void rotateLeft(int position) {
+		if(position == 1) {
 			bloc3.setX(bloc3.getX() - 50);
 			bloc3.setY(bloc3.getY() + 50);
 			
@@ -123,11 +123,11 @@ public class TetriminosT extends Tetriminos{
 			bloc4.setX(bloc4.getX() - 50);
 			bloc4.setY(bloc4.getY() - 50);
 			
-			indexRotate = 4;
+			this.setIndexRotate(4);
 			
 			
 			
-		} else if (indexRotate == 2) {
+		} else if (position == 2) {
 			bloc3.setX(bloc3.getX() - 50);
 			bloc3.setY(bloc3.getY() - 50);
 			
@@ -137,9 +137,9 @@ public class TetriminosT extends Tetriminos{
 			bloc4.setX(bloc4.getX() + 50);
 			bloc4.setY(bloc4.getY() - 50);
 			
-			indexRotate = 1;
+			this.setIndexRotate(1);
 			
-		} else if (indexRotate == 3) {
+		} else if (position == 3) {
 			bloc3.setX(bloc3.getX() + 50);
 			bloc3.setY(bloc3.getY() - 50);
 			
@@ -149,9 +149,9 @@ public class TetriminosT extends Tetriminos{
 			bloc4.setX(bloc4.getX() + 50);
 			bloc4.setY(bloc4.getY() + 50);
 			
-			indexRotate = 2;
+			this.setIndexRotate(2);
 			
-		} else if (indexRotate == 4) {
+		} else if (position == 4) {
 			bloc3.setX(bloc3.getX() + 50);
 			bloc3.setY(bloc3.getY() + 50);
 			
@@ -161,7 +161,7 @@ public class TetriminosT extends Tetriminos{
 			bloc4.setX(bloc4.getX() - 50);
 			bloc4.setY(bloc4.getY() + 50);
 			
-			indexRotate = 3;
+			this.setIndexRotate(3);
 			
 		} else {
 			System.out.println("erreur dans la rotation de la pièce");
@@ -223,6 +223,14 @@ public class TetriminosT extends Tetriminos{
 		return isMovable;
 	}
 	
+	public int getIndexRotate() {
+		return indexRotate;
+	}
+
+	public void setIndexRotate(int indexRotate) {
+		this.indexRotate = indexRotate;
+	}
+
 	// pour savoir si la pièce est en mouvement, on met en mouvement ou non tous les Tetriminos de notre pièces
 	public void setMovable(boolean isMovable) {
 		if(isMovable) {

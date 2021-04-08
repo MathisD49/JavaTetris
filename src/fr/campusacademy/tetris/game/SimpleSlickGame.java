@@ -23,7 +23,7 @@ public class SimpleSlickGame extends BasicGame
 	// à remettre pour l'exemple
 	Tetriminos square = new Tetriminos(Color.blue, 50, 50, 150, 850);
 	Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 200, 800);
-	TetriminosL squareline = new TetriminosL();
+	LineTetriminos squareline = new LineTetriminos();
 	
 	Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
 //	Tetriminos square4 = new Tetriminos(Color.blue, 50, 50, 200, 850);
@@ -122,11 +122,11 @@ public class SimpleSlickGame extends BasicGame
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_F)) {
 			//squareline.rotate(squareline.isVertical());
-			squareline.rotateLeft();
+			squareline.rotateLeft(squareline.getIndexRotate());
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_J)) {
-			squareline.rotateRight();
+			squareline.rotateRight(squareline.getIndexRotate());
 			
 		}
 		

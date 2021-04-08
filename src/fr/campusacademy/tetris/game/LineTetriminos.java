@@ -6,7 +6,7 @@ import org.newdawn.slick.Graphics;
 public class LineTetriminos extends Tetriminos {
 	
 	private Color color;
-	private boolean isVertical = false;
+	private int indexRotate = 1;
 	
 	private boolean isMovable = true;
 	
@@ -52,8 +52,8 @@ public class LineTetriminos extends Tetriminos {
 	}
 	
 	// permet de tourner la pièce à droite
-	public void rotateRight(boolean vertical) {
-		if(vertical) {
+	public void rotateRight(int position) {
+		if(position == 2) {
 			bloc1.setX(bloc1.getX() - 150);
 			bloc1.setY(bloc1.getY() + 150);
 			
@@ -63,7 +63,7 @@ public class LineTetriminos extends Tetriminos {
 			bloc3.setX(bloc3.getX() - 50);
 			bloc3.setY(bloc3.getY() + 50);
 			
-			this.setVertical(false);
+			this.setIndexRotate(1);
 			
 		} else {
 			bloc1.setX(bloc1.getX() + 150);
@@ -74,15 +74,15 @@ public class LineTetriminos extends Tetriminos {
 			
 			bloc3.setX(bloc3.getX() + 50);
 			bloc3.setY(bloc3.getY() - 50);
-			this.setVertical(true);
+			this.setIndexRotate(2);
 		}
 		
 	}
 	
 	// permet de tourner la pièce à gauche
-	public void rotateLeft(boolean vertical) {
+	public void rotateLeft(int indexRotate) {
 		// étant donné qu'ici la pièce est une ligne, la rotation à droite et à gauche est la même
-		this.rotateRight(vertical);
+		this.rotateRight(indexRotate);
 	}
 	
 	
@@ -126,20 +126,20 @@ public class LineTetriminos extends Tetriminos {
 		this.bloc4 = bloc4;
 	}
 
-	// permet de savoir si la pièce est verticale (tournée) ou non
-	public boolean isVertical() {
-		return isVertical;
-	}
-
-	// permet de définir si la pièce est verticale (tournée) ou non
-	public void setVertical(boolean isVertical) {
-		this.isVertical = isVertical;
-	}
-
 	public boolean isMovable() {
 		return isMovable;
 	}
 	
+	// permet de savoir si la pièce est verticale (tournée) ou non
+	public int getIndexRotate() {
+		return indexRotate;
+	}
+	
+	// permet de définir si la pièce est verticale (tournée) ou non
+	public void setIndexRotate(int indexRotate) {
+		this.indexRotate = indexRotate;
+	}
+
 	// pour savoir si la pièce est en mouvement, on met en mouvement ou non tous les Tetriminos de notre pièces
 	public void setMovable(boolean isMovable) {
 		if(isMovable) {
