@@ -6,8 +6,6 @@ import org.newdawn.slick.Graphics;
 public class TetriminosT extends Tetriminos{
 	private Color color;
 	
-	private boolean isVertical = false;
-	
 	private boolean isMovable = true;
 	
 	private int indexRotate = 1;
@@ -207,16 +205,6 @@ public class TetriminosT extends Tetriminos{
 
 	public void setBloc4(Tetriminos bloc4) {
 		this.bloc4 = bloc4;
-	}
-
-	// permet de savoir si la pièce est verticale (tournée) ou non
-	public boolean isVertical() {
-		return isVertical;
-	}
-
-	// permet de définir si la pièce est verticale (tournée) ou non
-	public void setVertical(boolean isVertical) {
-		this.isVertical = isVertical;
 	}
 
 	public boolean isMovable() {

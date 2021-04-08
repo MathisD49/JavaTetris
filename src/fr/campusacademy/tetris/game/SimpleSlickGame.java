@@ -23,7 +23,7 @@ public class SimpleSlickGame extends BasicGame
 	// à remettre pour l'exemple
 	Tetriminos square = new Tetriminos(Color.blue, 50, 50, 150, 850);
 	Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 200, 800);
-	LineTetriminos squareline = new LineTetriminos();
+	TetriminosS squareline = new TetriminosS();
 	
 	Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
 //	Tetriminos square4 = new Tetriminos(Color.blue, 50, 50, 200, 850);
