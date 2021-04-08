@@ -23,7 +23,7 @@ public class SimpleSlickGame extends BasicGame
 	// à remettre pour l'exemple
 	Tetriminos square = new Tetriminos(Color.blue, 50, 50, 150, 850);
 	Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 200, 800);
-	TetriminosS squareline = new TetriminosS();
+	TetriminosL squareline = new TetriminosL();
 	
 	Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
 //	Tetriminos square4 = new Tetriminos(Color.blue, 50, 50, 200, 850);
@@ -51,82 +51,37 @@ public class SimpleSlickGame extends BasicGame
 		// création d'une variable pour accueillir le bloc le plus haut sur le même axe X que la pièce 
 		
 		// détermination du bloc le plus haut dans la liste "blocks"
-
-		// TODO : trouver le highestBlock de ma pièce
-		//	creer une variable intermédiaire qui contiendra les coor d'un bloc
-		//	parcourir les 4 blocs de notre pièces
-		// 	à chaque bloc voir la pièce la plus haute sur l'axe X du cube
-		// 	si un bloc est plus haut que le précédent, le remplacer dans la variable intermédiaire
-		// 	définir notre highestBlock avec le bloc trouvé.
-		
-		// à remettre pour l'exemple
-//		for(Tetriminos tetri : blocks) {			
-//			if(highestBlock.getX() == square.getX()) {
-//				if(tetri.getX() == square.getX() && tetri.getY() < highestBlock.getY()) {
-//					highestBlock = tetri;
-//				}
-//			}else {
-//				highestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
-//				if(tetri.getX() == square.getX() && tetri.getY() < highestBlock.getY()) {
-//					highestBlock = tetri;
-//				}
-//			}
-//		}
 		
 		// script pour définir le bloc le plus haut.
-		//int[] xAxes = {squareline.getBloc1().getX(), squareline.getBloc1().getX()+50, squareline.getBloc1().getX()+100, squareline.getBloc1().getX()+150};
-		Tetriminos intermediateHighestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
+		int count = 0;
+		// création d'une liste qui contiendra tous les highestBlock pour les différents AxeX de la pièce
+		Tetriminos listHighestBlock[] = new Tetriminos[4];
 		for (Tetriminos xAxe : squareline.getBlocks()) {
+			Tetriminos intermediateHighestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
 			for (Tetriminos tetri : blocks) {
 				if(tetri.getX() == xAxe.getX() && tetri.getY() < intermediateHighestBlock.getY()) {
 					intermediateHighestBlock = tetri;
 				}
 			}
+			listHighestBlock[count] = intermediateHighestBlock;
+			count ++;
 		}
-		highestBlock = intermediateHighestBlock;
 		
-		//System.out.println(highestBlock);
-		System.out.println(blocks);
+		System.out.println(listHighestBlock[0]);
 		
 		
 		
 		
 		// vérification qu'il n'y a pas de bloc sur sa route ou qu'il arrive au bout (si oui il avance)
-		// à remettre pour l'exemple
-		
-		// TODO: système collision
-		//	Prendre le même algo et boucler sur chaque blocs de ma pièce
-//		if(squareline.isMovable()) {
-//			boolean test = true;
-//			for(Tetriminos myBlock : squareline.getBlocks()) {
-//				if (squareline.getY() != highestBlock.getY()-50 && squareline.getX() == highestBlock.getX() && squareline.getY() != 850) {
-//					test = true;
-//				} else if (squareline.getY() != highestBlock.getY()-50 && squareline.getX() != highestBlock.getX() && squareline.getY() != 850){
-//					test = true;
-//				} else if(squareline.getY() == highestBlock.getY()-50 && squareline.getX() != highestBlock.getX() && squareline.getY() != 850) {
-//					test = true;
-//				} else {
-//					test = false;
-//					squareline.setMovable(false);
-//					System.out.println("yo");
-//					for(Tetriminos myBlocks : squareline.getBlocks()) {
-//						blocks.add(myBlocks);
-//					}
-//				}
-//			}
-//			if(test) {
-//				salut++;
-//				squareline.goDown();
-//				System.out.println(salut);
-//			}
-//		}
 		
 		boolean isObstacle = false;
 		if(squareline.isMovable()) {
 			for(Tetriminos myBlock : squareline.getBlocks()) {
-				if(myBlock.getY() == highestBlock.getY()-50 && myBlock.getX() == highestBlock.getX() || myBlock.getY() == 850) {
-					isObstacle = true;
-					squareline.setMovable(false);
+				for(Tetriminos myHighestBlock : listHighestBlock) {
+					if(myBlock.getY() == myHighestBlock.getY()-50 && myBlock.getX() == myHighestBlock.getX() || myBlock.getY() == 850) {
+						isObstacle = true;
+						squareline.setMovable(false);
+					}
 				}
 			}
 			
@@ -139,25 +94,7 @@ public class SimpleSlickGame extends BasicGame
 			if(!isObstacle) {
 				squareline.goDown();
 			}
-		}
-		
-		
-		
-		// pour tous les blocs faire une confition qui dit : si un bloc à les mêmes coords que le highestbloc || y = 850 => stop SINON goDown();
-		
-		
-		
-//		if(squareline.getBloc1().getY() != 850 || squareline.getBloc2().getY() != 850 || squareline.getBloc3().getY() != 850 || squareline.getBloc4().getY() != 850) {
-//			squareline.goDown();
-//		}
-		
-		
-		
-		
-//		System.out.println("highestBlock : " + highestBlock.getX() + " | " + highestBlock.getY());
-//		System.out.println("square : " + square.getX() + " | " + square.getY() + "\n");
-		
-		// les deux autres conditions : && square.isMovable() && square.getX()-50 != -50 (obstacle + cote)
+		}	
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_G)) {
 			boolean isBorder = false;
@@ -182,7 +119,7 @@ public class SimpleSlickGame extends BasicGame
 				squareline.goRight();
 			}
 		}
-//		
+		
 		if (gc.getInput().isKeyPressed(Input.KEY_F)) {
 			//squareline.rotate(squareline.isVertical());
 			squareline.rotateLeft();
@@ -203,30 +140,12 @@ public class SimpleSlickGame extends BasicGame
 			tetri.setColor(Color.blue);
 			tetri.createItem(g);
 		}
-		
-		//g.drawString("x : " + square.getX() + " | y : " + square.getY(), 100, 100);
-		//g.drawString("x : " + squareline.getBloc4().getX() + " | y : " + squareline.getBloc4().getY(), 100, 100);
-		
-		//à remettre pour l'exemple
 		square.createItem(g);
 		squareline.createItem(g);
-		
-//		g.drawString("x : " + square2.getX() + " | y : " + square2.getY(), 120, 120);
-		square2.createItem(g);
-//		blocks.add(square2);
-//		g.drawString("coordinate : " + Ycoordinate[0], 140, 140);
-//		
+		square2.createItem(g);	
 		square3.createItem(g);
 		
-		
 		g.setColor(Color.white);
-		
-		// à remettre pour l'exemple
-//		if(!square.isMovable()) {
-//			square = new Tetriminos(Color.red, 50, 50, 100, 0);
-//			square.createItem(g);
-//		}
-		
 		
 		// quadrillage
 		for (int i = 0; i < 50; i++) {
@@ -269,8 +188,13 @@ public class SimpleSlickGame extends BasicGame
 // quand une pièce isMovable(false) on l'ajoute au tableau
 // la variable square aura un autre bloc
 
-// pour chaque pièce creer une methode pour aller vers le bas (+conditions) et bouger etc et les appeler ensuite dans le code ici
-
 //pour la descente des pieces quand on supprime une ligne dire à tous les blocs du dessus de descendre de 50 (ou 50*ligne_supprime)
 
-// faire un tableau qui contiendra les 4 object bloc de chaques pièces, enuite faire une boucle qui parcours la liste et utiliser les anciennes conditions sur chacun d'eux
+// TODO :
+// génération automatique nouvelles pièces
+// creer variable : Object myItem;
+// avec un random, définir quel type de pièce : myItem = new TetriminosO();
+// pour finir définir vraiment l'objet :
+// if(myItem instanceof TetriminosO){
+//	TetriminosO item = (TetriminosO) myItem;
+//}
