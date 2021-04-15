@@ -8,6 +8,8 @@ public class TetriminosO extends Tetriminos{
 	
 	private boolean isMovable = true;
 	
+	private int indexRotate = 1;
+	
 	private Tetriminos bloc1 = new Tetriminos(Color.blue, 50, 50, 100, 0);
 	private Tetriminos bloc2 = new Tetriminos(Color.blue, 50, 50, 150, 0);
 	private Tetriminos bloc3 = new Tetriminos(Color.blue, 50, 50, 100, 50);
@@ -123,10 +125,26 @@ public class TetriminosO extends Tetriminos{
 		Tetriminos[] myBlocks = {bloc1, bloc2, bloc3, bloc4};
 		return myBlocks;
 	}
+	
+	public int getIndexRotate() {
+		return indexRotate;
+	}
+	
+	public void setIndexRotate(int index) {
+		indexRotate = 1;
+	}
+	
+	public void rotateLeft(int nb) {
+		
+	}
+	
+	public void rotateRight(int nb) {
+		
+	}
 
 	@Override
 	public String toString() {
-		return "LineTetriminos [color=" + color + ", bloc1=" + bloc1 + ", bloc2=" + bloc2 + ", bloc3=" + bloc3
+		return "TetriminosO [color=" + color + ", bloc1=" + bloc1 + ", bloc2=" + bloc2 + ", bloc3=" + bloc3
 				+ ", bloc4=" + bloc4 + "]";
 	}
 }

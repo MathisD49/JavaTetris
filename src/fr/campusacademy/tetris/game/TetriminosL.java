@@ -245,7 +245,7 @@ public class TetriminosL extends Tetriminos{
 
 	@Override
 	public String toString() {
-		return "LineTetriminos [color=" + color + ", bloc1=" + bloc1 + ", bloc2=" + bloc2 + ", bloc3=" + bloc3
+		return "TetriminosL [color=" + color + ", bloc1=" + bloc1 + ", bloc2=" + bloc2 + ", bloc3=" + bloc3
 				+ ", bloc4=" + bloc4 + "]";
 	}
 }

@@ -23,10 +23,23 @@ public class SimpleSlickGame extends BasicGame
 	// à remettre pour l'exemple
 	Tetriminos square = new Tetriminos(Color.blue, 50, 50, 150, 850);
 	Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 200, 800);
-	TetriminosS squareline = new TetriminosS();
 	
+	// mettre la variable receveuse en Object ou Tetriminos et ensuite faire un cast
+	
+	public final ArrayList<TypeArrayList> test2 = new ArrayList<>();
+	
+	// peut être utiliser ça pour le changement de type
+	TetriminosT squareline = new TetriminosT();
+	
+	double nombre = Math.random();
+	
+	// création variable Tetriminos test = quelque chose
+	// condition pour creer ls pièces ex : TetriminosT iez = new TetriminosT....
+	// dedans on dit test = notre nouvelle pièce
+	// if test instanceof.... -> squareline bla bla bla
+		
 	Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
-//	Tetriminos square4 = new Tetriminos(Color.blue, 50, 50, 200, 850);
+	Tetriminos square4 = new Tetriminos(Color.blue, 50, 50, 200, 850);
 	
 	Tetriminos highestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
 	
@@ -43,6 +56,10 @@ public class SimpleSlickGame extends BasicGame
 		blocks.add(square);
 		blocks.add(square2);
 		blocks.add(square3);
+		
+		test2.add(new TypeArrayList(nombre));
+		System.out.println(test2.get(0).getBlocks(nombre));
+		
 	}
 
 	@Override
@@ -56,7 +73,7 @@ public class SimpleSlickGame extends BasicGame
 		int count = 0;
 		// création d'une liste qui contiendra tous les highestBlock pour les différents AxeX de la pièce
 		Tetriminos listHighestBlock[] = new Tetriminos[4];
-		for (Tetriminos xAxe : squareline.getBlocks()) {
+		for (Tetriminos xAxe : test2.get(0).getBlocks(nombre)) {
 			Tetriminos intermediateHighestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
 			for (Tetriminos tetri : blocks) {
 				if(tetri.getX() == xAxe.getX() && tetri.getY() < intermediateHighestBlock.getY()) {
@@ -67,81 +84,79 @@ public class SimpleSlickGame extends BasicGame
 			count ++;
 		}
 		
-		System.out.println(listHighestBlock[0]);
-		
-		
-		
-		
 		// vérification qu'il n'y a pas de bloc sur sa route ou qu'il arrive au bout (si oui il avance)
 		
 		boolean isObstacle = false;
-		if(squareline.isMovable()) {
-			for(Tetriminos myBlock : squareline.getBlocks()) {
+		if(test2.get(0).isMovable(nombre)) {
+			for(Tetriminos myBlock : test2.get(0).getBlocks(nombre)) {
 				for(Tetriminos myHighestBlock : listHighestBlock) {
 					if(myBlock.getY() == myHighestBlock.getY()-50 && myBlock.getX() == myHighestBlock.getX() || myBlock.getY() == 850) {
 						isObstacle = true;
-						squareline.setMovable(false);
+						test2.get(0).setMovable(false, nombre);
 					}
 				}
 			}
 			
-			if(!squareline.isMovable()) {
-				for(Tetriminos block : squareline.getBlocks()) {
+			if(!test2.get(0).isMovable(nombre)) {
+				for(Tetriminos block : test2.get(0).getBlocks(nombre)) {
 					blocks.add(block);
 				}
+				test2.remove(0);
+				nombre = Math.random();
+				test2.add(new TypeArrayList(nombre));
+				
 			}
 			
 			if(!isObstacle) {
-				squareline.goDown();
+				test2.get(0).goDown(nombre);
 			}
 		}	
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_G)) {
 			boolean isBorder = false;
-			for(Tetriminos block : squareline.getBlocks()) {
+			for(Tetriminos block : test2.get(0).getBlocks(nombre)) {
 				if(block.getX() == 0) {
 					isBorder = true;
 				}
 			}
 			if(!isBorder) {
-				squareline.goLeft();
+				test2.get(0).goLeft(nombre);
 			}
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_H)) {
 			boolean isBorder = false;
-			for(Tetriminos block : squareline.getBlocks()) {
+			for(Tetriminos block : test2.get(0).getBlocks(nombre)) {
 				if(block.getX() == 450) {
 					isBorder = true;
 				}
 			}
 			if(!isBorder) {
-				squareline.goRight();
+				test2.get(0).goRight(nombre);
 			}
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_F)) {
 			//squareline.rotate(squareline.isVertical());
-			squareline.rotateLeft(squareline.getIndexRotate());
+			test2.get(0).rotateLeft(test2.get(0).getIndexRotate(nombre), nombre);
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_J)) {
-			squareline.rotateRight(squareline.getIndexRotate());
+			test2.get(0).rotateRight(test2.get(0).getIndexRotate(nombre), nombre);
 			
 		}
-		
 		
 	}
 
 	@Override
-	public void render(GameContainer gc, Graphics g) throws SlickException
-	{
+	public void render(GameContainer gc, Graphics g) throws SlickException {
+		
 		for (Tetriminos tetri: blocks) {
 			tetri.setColor(Color.blue);
 			tetri.createItem(g);
 		}
 		square.createItem(g);
-		squareline.createItem(g);
+		test2.get(0).createItem(g, nombre);
 		square2.createItem(g);	
 		square3.createItem(g);
 		
@@ -160,6 +175,7 @@ public class SimpleSlickGame extends BasicGame
 		}
 		
 	}
+	
 	
 	
 	
@@ -198,3 +214,8 @@ public class SimpleSlickGame extends BasicGame
 // if(myItem instanceof TetriminosO){
 //	TetriminosO item = (TetriminosO) myItem;
 //}
+
+
+// problème génération pièce, dessus fonctionne pas
+// regarder tuto dossier Brave java_tetris -> creer interface ou class et aller chercher les différentes pièces dedans (faire tout dedans)
+// essayer de bricoler entre type tetriminos / autre || truc instanceof || machin = null etc etc etc.....
