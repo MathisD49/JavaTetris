@@ -124,13 +124,15 @@ public class SimpleSlickGame extends BasicGame
 			
 		}
 		
+		
+		
 	}
 
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		
 		for (Tetriminos tetri: blocks) {
-			tetri.setColor(Color.blue);
+			//tetri.setColor(Color.blue);
 			tetri.createItem(g);
 		}
 		

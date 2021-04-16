@@ -10,10 +10,10 @@ public class TetriminosJ extends Tetriminos{
 	
 	private int indexRotate = 1;
 	
-	private Tetriminos bloc1 = new Tetriminos(Color.blue, 50, 50, 100, 50); // A
-	private Tetriminos bloc2 = new Tetriminos(Color.blue, 50, 50, 150, 50); // B
-	private Tetriminos bloc3 = new Tetriminos(Color.blue, 50, 50, 200, 50); // C
-	private Tetriminos bloc4 = new Tetriminos(Color.blue, 50, 50, 200, 0); // D
+	private Tetriminos bloc1 = new Tetriminos(Color.orange, 50, 50, 100, 50); // A
+	private Tetriminos bloc2 = new Tetriminos(Color.orange, 50, 50, 150, 50); // B
+	private Tetriminos bloc3 = new Tetriminos(Color.orange, 50, 50, 200, 50); // C
+	private Tetriminos bloc4 = new Tetriminos(Color.orange, 50, 50, 200, 0); // D
 	
 	public TetriminosJ() {
 		

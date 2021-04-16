@@ -10,10 +10,10 @@ public class LineTetriminos extends Tetriminos {
 	
 	private boolean isMovable = true;
 	
-	private Tetriminos bloc1 = new Tetriminos(Color.red, 50, 50, 100, 0);
-	private Tetriminos bloc2 = new Tetriminos(Color.blue, 50, 50, 150, 0);
-	private Tetriminos bloc3 = new Tetriminos(Color.pink, 50, 50, 200, 0);
-	private Tetriminos bloc4 = new Tetriminos(Color.green, 50, 50, 250, 0);
+	private Tetriminos bloc1 = new Tetriminos(Color.cyan, 50, 50, 100, 0);
+	private Tetriminos bloc2 = new Tetriminos(Color.cyan, 50, 50, 150, 0);
+	private Tetriminos bloc3 = new Tetriminos(Color.cyan, 50, 50, 200, 0);
+	private Tetriminos bloc4 = new Tetriminos(Color.cyan, 50, 50, 250, 0);
 	
 	public LineTetriminos() {
 		
