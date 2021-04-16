@@ -20,26 +20,9 @@ public class SimpleSlickGame extends BasicGame
 	public final ArrayList<Tetriminos> blocks = new ArrayList<>();
 	boolean isObstacle = false;
 	
-	// à remettre pour l'exemple
-	Tetriminos square = new Tetriminos(Color.blue, 50, 50, 150, 850);
-	Tetriminos square2 = new Tetriminos(Color.blue, 50, 50, 200, 800);
-	
-	// mettre la variable receveuse en Object ou Tetriminos et ensuite faire un cast
-	
 	public final ArrayList<TypeArrayList> test2 = new ArrayList<>();
 	
-	// peut être utiliser ça pour le changement de type
-	TetriminosT squareline = new TetriminosT();
-	
 	double nombre = Math.random();
-	
-	// création variable Tetriminos test = quelque chose
-	// condition pour creer ls pièces ex : TetriminosT iez = new TetriminosT....
-	// dedans on dit test = notre nouvelle pièce
-	// if test instanceof.... -> squareline bla bla bla
-		
-	Tetriminos square3 = new Tetriminos(Color.blue, 50, 50, 200, 850);
-	Tetriminos square4 = new Tetriminos(Color.blue, 50, 50, 200, 850);
 	
 	Tetriminos highestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
 	
@@ -52,11 +35,6 @@ public class SimpleSlickGame extends BasicGame
 
 	@Override
 	public void init(GameContainer gc) throws SlickException {
-		// on ajoute les blocs dès le début du code (pour éviter les duplications dans la liste blocks)
-		blocks.add(square);
-		blocks.add(square2);
-		blocks.add(square3);
-		
 		test2.add(new TypeArrayList(nombre));
 		System.out.println(test2.get(0).getBlocks(nombre));
 		
@@ -155,10 +133,8 @@ public class SimpleSlickGame extends BasicGame
 			tetri.setColor(Color.blue);
 			tetri.createItem(g);
 		}
-		square.createItem(g);
+		
 		test2.get(0).createItem(g, nombre);
-		square2.createItem(g);	
-		square3.createItem(g);
 		
 		g.setColor(Color.white);
 		
@@ -187,35 +163,4 @@ public class SimpleSlickGame extends BasicGame
 	}
 }
 
-
-// TODO :
-// ATTENTION /!\
-// pour la rotation changer isVertical de Line avec une index (comme T)
-// sinon ça posera problème lors de l'appel
-// getter pour indexRotate et lui donner en paramètre
-// A VOIR PLUS TARD
-
-
-// pour générer de nouveaux blocs automatiquement : regarder les deux conditions (855 / Y)
-// et si une des deux est rempli, on fait nos trucs, on laisse 2 sec et on genere un nouveau block
-// utiliser instanceOf ou creer une nouvelle classe pour générer un nouveau bloc
-
-// faire une tableau qui contient les coordonnées de toutes les pièces qui le génèrera à chaque update
-// quand une pièce isMovable(false) on l'ajoute au tableau
-// la variable square aura un autre bloc
-
 //pour la descente des pieces quand on supprime une ligne dire à tous les blocs du dessus de descendre de 50 (ou 50*ligne_supprime)
-
-// TODO :
-// génération automatique nouvelles pièces
-// creer variable : Object myItem;
-// avec un random, définir quel type de pièce : myItem = new TetriminosO();
-// pour finir définir vraiment l'objet :
-// if(myItem instanceof TetriminosO){
-//	TetriminosO item = (TetriminosO) myItem;
-//}
-
-
-// problème génération pièce, dessus fonctionne pas
-// regarder tuto dossier Brave java_tetris -> creer interface ou class et aller chercher les différentes pièces dedans (faire tout dedans)
-// essayer de bricoler entre type tetriminos / autre || truc instanceof || machin = null etc etc etc.....

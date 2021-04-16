@@ -3,16 +3,7 @@ package fr.campusacademy.tetris.game;
 import org.newdawn.slick.Graphics;
 
 public class TypeArrayList{
-	// ici mettre des attributes de tous les types de tetriminos
-	// creer des constructeurs overload avec tous les types
-	// mettre peut être getter setter etc... (aller voir le lien du site)
-	// ensuite mettre cette class en type de l'arraylist de simpleslickgame et add un new object dedans à chaque fois
-	
-	// mettre tous les tetriminos dedans
-	// add un tetriminos dans le code principal
-	// quand on veut changer on remove puis on add
-	// utiliser des nombres pour faire spawn une nouvelle pièce
-	
+
 	private LineTetriminos myTetriminosI;
 	private TetriminosT myTetriminosT;
 	private TetriminosL myTetriminosL;
@@ -78,7 +69,6 @@ public class TypeArrayList{
 	}
 	
 	public Tetriminos[] getBlocks(double random) {
-		//return this.getBlocks();
 		if(random >= 0 && random <= 0.14) {
 			return myTetriminosT.getBlocks();
 		} else if (random > 0.14 && random <= 0.28){
@@ -97,7 +87,6 @@ public class TypeArrayList{
 	}
 	
 	public boolean isMovable(double random) {
-		//return this.isMovable();
 		if(random >= 0 && random <= 0.14) {
 			return myTetriminosT.isMovable();
 		} else if (random > 0.14 && random <= 0.28){
@@ -116,7 +105,6 @@ public class TypeArrayList{
 	}
 	
 	public void setMovable(boolean isMovable, double random) {
-		//this.setMovable(isMovable);
 		if(random >= 0 && random <= 0.14) {
 			myTetriminosT.setMovable(isMovable);
 		} else if (random > 0.14 && random <= 0.28){
@@ -135,7 +123,6 @@ public class TypeArrayList{
 	}
 	
 	public void goDown(double random) {
-		//this.goDown();
 		if(random >= 0 && random <= 0.14) {
 			myTetriminosT.goDown();
 		} else if (random > 0.14 && random <= 0.28){
@@ -154,7 +141,6 @@ public class TypeArrayList{
 	}
 	
 	public void goLeft(double random) {
-		//this.goLeft();
 		if(random >= 0 && random <= 0.14) {
 			myTetriminosT.goLeft();
 		} else if (random > 0.14 && random <= 0.28){
@@ -173,7 +159,6 @@ public class TypeArrayList{
 	}
 	
 	public void goRight(double random) {
-		//this.goRight();
 		if(random >= 0 && random <= 0.14) {
 			myTetriminosT.goRight();
 		} else if (random > 0.14 && random <= 0.28){
@@ -192,7 +177,6 @@ public class TypeArrayList{
 	}
 	
 	public int getIndexRotate(double random) {
-		//return this.getIndexRotate();
 		if(random >= 0 && random <= 0.14) {
 			return myTetriminosT.getIndexRotate();
 		} else if (random > 0.14 && random <= 0.28){
@@ -211,7 +195,6 @@ public class TypeArrayList{
 	}
 
 	public void setIndexRotate(int indexRotate, double random) {
-		//this.setIndexRotate(indexRotate);
 		if(random >= 0 && random <= 0.14) {
 			myTetriminosT.setIndexRotate(indexRotate);
 		} else if (random > 0.14 && random <= 0.28){
@@ -230,7 +213,6 @@ public class TypeArrayList{
 	}
 	
 	public void rotateLeft(int position, double random) {
-		//this.rotateLeft(position);
 		if(random >= 0 && random <= 0.14) {
 			myTetriminosT.rotateLeft(position);
 		} else if (random > 0.14 && random <= 0.28){
@@ -249,7 +231,6 @@ public class TypeArrayList{
 	}
 	
 	public void rotateRight(int position, double random) {			
-		//this.rotateRight(position);
 		if(random >= 0 && random <= 0.14) {
 			myTetriminosT.rotateRight(position);
 		} else if (random > 0.14 && random <= 0.28){
@@ -269,7 +250,6 @@ public class TypeArrayList{
 	}
 	
 	public void createItem(Graphics g, double random) {
-		//this.createItem(g);
 		if(random >= 0 && random <= 0.14) {
 			myTetriminosT.createItem(g);
 		} else if (random > 0.14 && random <= 0.28){
@@ -298,6 +278,3 @@ public class TypeArrayList{
 	
 	
 }
-
-
-// si pas possible on va faire en sorte d'overload les methodes avec un paramètre nombre pour faire le truc des if

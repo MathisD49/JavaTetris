@@ -134,13 +134,9 @@ public class TetriminosO extends Tetriminos{
 		indexRotate = 1;
 	}
 	
-	public void rotateLeft(int nb) {
-		
-	}
+	public void rotateLeft(int nb) {}
 	
-	public void rotateRight(int nb) {
-		
-	}
+	public void rotateRight(int nb) {}
 
 	@Override
 	public String toString() {
