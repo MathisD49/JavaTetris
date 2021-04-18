@@ -19,6 +19,7 @@ public class SimpleSlickGame extends BasicGame
 	private final int size = 50;
 	public final ArrayList<Tetriminos> blocks = new ArrayList<>();
 	boolean isObstacle = false;
+	int test = 0;
 	
 	public final ArrayList<TypeArrayList> test2 = new ArrayList<>();
 	
@@ -71,6 +72,9 @@ public class SimpleSlickGame extends BasicGame
 					if(myBlock.getY() == myHighestBlock.getY()-50 && myBlock.getX() == myHighestBlock.getX() || myBlock.getY() == 850) {
 						isObstacle = true;
 						test2.get(0).setMovable(false, nombre);
+					} else if (myBlock.getY() == myHighestBlock.getY() && myBlock.getY() == 0) { // mise en place d'un GAME OVER quand il n'y a plus de place pour faire spawn une pièce
+						System.out.println("GAME OVER  !!!!!!!!!");
+						gc.exit();
 					}
 				}
 			}
@@ -78,6 +82,7 @@ public class SimpleSlickGame extends BasicGame
 			if(!test2.get(0).isMovable(nombre)) {
 				for(Tetriminos block : test2.get(0).getBlocks(nombre)) {
 					blocks.add(block);
+					
 				}
 				test2.remove(0);
 				nombre = Math.random();
@@ -124,15 +129,12 @@ public class SimpleSlickGame extends BasicGame
 			
 		}
 		
-		
-		
 	}
 
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		
 		for (Tetriminos tetri: blocks) {
-			//tetri.setColor(Color.blue);
 			tetri.createItem(g);
 		}
 		
@@ -166,3 +168,7 @@ public class SimpleSlickGame extends BasicGame
 }
 
 //pour la descente des pieces quand on supprime une ligne dire à tous les blocs du dessus de descendre de 50 (ou 50*ligne_supprime)
+
+// si mon item arrive vers un obstacle il s'arrete. si mon item est DANS un obstacle, il ne se stop pas
+
+// dire que si un ou plus des quatres blocs du spawn sont pris, game over
