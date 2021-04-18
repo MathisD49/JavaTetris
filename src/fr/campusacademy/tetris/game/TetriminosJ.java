@@ -100,7 +100,7 @@ public class TetriminosJ extends Tetriminos{
 			
 			bloc4.setX(bloc4.getX() + 100);
 			
-			this.setIndexRotate(4);
+			this.setIndexRotate(1);
 			
 		} else {
 			System.out.println("erreur dans la rotation de la pièce");

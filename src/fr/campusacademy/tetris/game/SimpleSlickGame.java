@@ -87,25 +87,51 @@ public class SimpleSlickGame extends BasicGame
 				}
 				
 				// ceci va regarder si des blocks sont sur la derniere ligne
-				int test = 0;
-				for(Tetriminos tetri : blocks) {
-					if(tetri.getY() == 850) {
-						test++;
-					}
-				}
+//				int test = 0;
+//				for(Tetriminos tetri : blocks) {
+//					if(tetri.getY() == 850) {
+//						test++;
+//					}
+//				}
 				
 				// si la ligne est complete, il va supprimer les blocks de cette lignes puis va faire descendre tous les blocks
 				// faire attention par la suite à ne pas faire descendre les blocs en dessous de la ligne supprimé !!!!
-				if(test == 10) {
+//				if(test == 10) {
+//					for(Tetriminos tetri : blocks) {
+//						if(tetri.getY() == 850) {
+//							blocks.remove(blocks.indexOf(tetri));
+//							//System.out.println(blocks.indexOf(tetri));
+//						}
+//					}
+//					
+//					for(Tetriminos tetri : blocks) {
+//						tetri.setY(tetri.getY() + 50);
+//					}
+//					
+//				}
+				
+				for(int j = 0; j<=850; j = j+50) {
+					int test = 0;
 					for(Tetriminos tetri : blocks) {
-						if(tetri.getY() == 850) {
-							blocks.remove(blocks.indexOf(tetri));
-							//System.out.println(blocks.indexOf(tetri));
+						if(tetri.getY() == j) {
+							test++;
 						}
 					}
 					
-					for(Tetriminos tetri : blocks) {
-						tetri.setY(tetri.getY() + 50);
+					if(test >= 10) {
+						for(Tetriminos tetri : blocks) {
+							if(tetri.getY() == j) {
+								blocks.remove(blocks.indexOf(tetri));
+								//System.out.println(blocks.indexOf(tetri));
+							}
+						}
+						
+						for(Tetriminos tetri : blocks) {
+							if(tetri.getY() < j) {
+								tetri.setY(tetri.getY() + 50);
+							}
+						}
+						
 					}
 					
 				}
@@ -199,3 +225,6 @@ public class SimpleSlickGame extends BasicGame
 // si mon item arrive vers un obstacle il s'arrete. si mon item est DANS un obstacle, il ne se stop pas
 
 // dire que si un ou plus des quatres blocs du spawn sont pris, game over
+
+//TODO : 
+// gérer les collisions de coté
