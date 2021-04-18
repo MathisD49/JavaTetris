@@ -36,11 +36,11 @@ public class Score {
 	}
 
 	public void calculerScore(int nbLineDel) {
-		nbLine += nbLineDel;
-		if (nbLine % 10 == 0 && nbLine != 0) {
-			level++;
-			nbLine = 0;
-		}
+//		nbLine += nbLineDel;
+//		if (nbLine % 10 == 0 && nbLine != 0) {
+//			level++;
+//			nbLine = 0;
+//		}
 
 		switch (nbLineDel) {
 		case 1:
