@@ -1,6 +1,8 @@
 package fr.campusacademy.tetris.game;
 
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 //import org.newdawn.slick.AppGameContainer;
@@ -17,9 +19,8 @@ public class SimpleSlickGame extends BasicGame
 	int position = 0;
 	int xAxe = 100;
 	private final int size = 50;
-	public final ArrayList<Tetriminos> blocks = new ArrayList<>();
+	public final CopyOnWriteArrayList<Tetriminos> blocks = new CopyOnWriteArrayList<Tetriminos>();
 	boolean isObstacle = false;
-	int test = 0;
 	
 	public final ArrayList<TypeArrayList> test2 = new ArrayList<>();
 	
@@ -84,6 +85,32 @@ public class SimpleSlickGame extends BasicGame
 					blocks.add(block);
 					
 				}
+				
+				// ceci va regarder si des blocks sont sur la derniere ligne
+				int test = 0;
+				for(Tetriminos tetri : blocks) {
+					if(tetri.getY() == 850) {
+						test++;
+					}
+				}
+				
+				// si la ligne est complete, il va supprimer les blocks de cette lignes puis va faire descendre tous les blocks
+				// faire attention par la suite à ne pas faire descendre les blocs en dessous de la ligne supprimé !!!!
+				if(test == 10) {
+					for(Tetriminos tetri : blocks) {
+						if(tetri.getY() == 850) {
+							blocks.remove(blocks.indexOf(tetri));
+							//System.out.println(blocks.indexOf(tetri));
+						}
+					}
+					
+					for(Tetriminos tetri : blocks) {
+						tetri.setY(tetri.getY() + 50);
+					}
+					
+				}
+				
+				// premet de générer une nouvelle pièce
 				test2.remove(0);
 				nombre = Math.random();
 				test2.add(new TypeArrayList(nombre));
