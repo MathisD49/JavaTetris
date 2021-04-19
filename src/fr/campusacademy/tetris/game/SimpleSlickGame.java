@@ -142,6 +142,15 @@ public class SimpleSlickGame extends BasicGame
 					isBorder = true;
 				}
 			}
+			
+			for(Tetriminos tetri : blocks) {
+				for(Tetriminos block : test2.get(0).getBlocks(nombre)) {
+					if(block.getX() - 50 == tetri.getX() && block.getY() == tetri.getY()) {
+						isBorder = true;
+					}
+				}
+			}
+			
 			if(!isBorder) {
 				test2.get(0).goLeft(nombre);
 			}
@@ -154,6 +163,16 @@ public class SimpleSlickGame extends BasicGame
 					isBorder = true;
 				}
 			}
+			
+			
+			for(Tetriminos tetri : blocks) {
+				for(Tetriminos block : test2.get(0).getBlocks(nombre)) {
+					if(block.getX() + 50 == tetri.getX() && block.getY() == tetri.getY()) {
+						isBorder = true;
+					}
+				}
+			}
+			
 			if(!isBorder) {
 				test2.get(0).goRight(nombre);
 			}
