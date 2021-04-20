@@ -8,6 +8,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 import fr.campusacademy.tetris.game.SimpleSlickGame;
+import fr.campusacademy.tetris.game.TestWindow;
 
 public class Launcher {
 	public static void main(String[] args)
@@ -16,7 +17,7 @@ public class Launcher {
 		{
 			AppGameContainer appgc;
 			appgc = new AppGameContainer(new SimpleSlickGame("Tetris"));
-			appgc.setDisplayMode(500, 900, false);
+			appgc.setDisplayMode(700, 900, false);
 			appgc.setTargetFrameRate(2);
 			Input.disableControllers();
 			appgc.start();

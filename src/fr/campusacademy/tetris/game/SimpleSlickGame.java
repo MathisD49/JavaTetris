@@ -38,9 +38,12 @@ public class SimpleSlickGame extends BasicGame
 	}
 
 	@Override
-	public void init(GameContainer gc) throws SlickException {
+	public void init(GameContainer gc) throws SlickException {		
+		
 		test2.add(new TypeArrayList(nombre));
 		System.out.println(test2.get(0).getBlocks(nombre));
+		
+		
 		
 	}
 
@@ -193,6 +196,10 @@ public class SimpleSlickGame extends BasicGame
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		
+		g.setBackground(Color.white);
+		g.setColor(Color.black); //set la couleur pour notre carré
+		g.fillRect(500, 0, 200, 900);
+		
 		for (Tetriminos tetri: blocks) {
 			tetri.createItem(g);
 		}
@@ -202,18 +209,19 @@ public class SimpleSlickGame extends BasicGame
 		g.setColor(Color.white);
 		
 		// quadrillage
-		for (int i = 0; i < 50; i++) {
-			float y = i*size;
-			float x = 0;
-			g.drawLine(x, y, gc.getWidth(), y);
-			
-			for (int j = 0; j < 50; j++) {
-				float x2 = j*size;
-				g.drawLine(x2, y, x2, gc.getHeight());
-			}
-		}
+//		for (int i = 0; i < 50; i++) {
+//			float y = i*size;
+//			float x = 0;
+//			g.drawLine(x, y, gc.getWidth(), y);
+//			
+//			for (int j = 0; j < 50; j++) {
+//				float x2 = j*size;
+//				g.drawLine(x2, y, x2, gc.getHeight());
+//			}
+//		}
 		
-		g.drawString("SCORE : " + score.getPoint(), 400, 50);
+		g.drawString("SCORE : ", 550, 50);
+		g.drawString("" + score.getPoint(), 600, 100);
 		
 	}
 	
@@ -233,6 +241,3 @@ public class SimpleSlickGame extends BasicGame
 // si mon item arrive vers un obstacle il s'arrete. si mon item est DANS un obstacle, il ne se stop pas
 
 // dire que si un ou plus des quatres blocs du spawn sont pris, game over
-
-//TODO : 
-// gérer les collisions de coté
