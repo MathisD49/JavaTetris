@@ -7,9 +7,11 @@ import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Image;
@@ -24,7 +26,8 @@ public class Menu extends JFrame implements ActionListener {
 
 		ImageIcon playIcon = new ImageIcon("assets/playbutton.png");
 		ImageIcon quitIcon = new ImageIcon("assets/quitbutton.png");
-
+		ImageIcon menuIcon = new ImageIcon("assets/menuicon.png");
+		
 		JButton playButton = new JButton();
 		playButton.setBounds(100, 200, 200, 100);
 		playButton.addActionListener(e -> playGame());
@@ -37,19 +40,15 @@ public class Menu extends JFrame implements ActionListener {
 		quitButton.addActionListener(e -> System.exit(0));
 		quitButton.setFocusable(false);
 		quitButton.setIcon(quitIcon);
-
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setTitle("Tetris Menu");
 		this.setLayout(null);
 		this.setSize(700, 500);
 		this.setVisible(true);
+		this.setLocationRelativeTo(null);
 		this.add(playButton);
-
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLayout(null);
-		this.setSize(700, 500);
-		this.setVisible(true);
 		this.add(quitButton);
-
 	}
 
 	void playGame() {
