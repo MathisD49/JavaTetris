@@ -107,8 +107,6 @@ public class SimpleSlickGame extends BasicGame
 						for(Tetriminos tetri : blocks) {
 							if(tetri.getY() == j) {
 								blocks.remove(blocks.indexOf(tetri));
-								//System.out.println(blocks.indexOf(tetri));
-								System.out.println("salut");
 							}
 						}
 						score.setNbLigne(score.getNbLigne() + 1);
@@ -196,7 +194,8 @@ public class SimpleSlickGame extends BasicGame
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		
-		g.setBackground(Color.white);
+		g.setColor(Color.white);
+		g.fillRect(0, 0, 500, 900);
 		g.setColor(Color.black); //set la couleur pour notre carré
 		g.fillRect(500, 0, 200, 900);
 		
