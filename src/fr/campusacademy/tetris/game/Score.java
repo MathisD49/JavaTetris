@@ -44,16 +44,16 @@ public class Score {
 
 		switch (nbLineDel) {
 		case 1:
-			point += 40 * level + 1;
+			point += 40;
 			break;
 		case 2:
-			point += 100 * level + 1;
+			point += 100;
 			break;
 		case 3:
-			point += 300 * level + 1;
+			point += 300;
 			break;
 		case 4:
-			point += 1200 * level + 1;
+			point += 1200;
 			break;
 		}
 
