@@ -18,7 +18,6 @@ public class SimpleSlickGame extends BasicGame
 	
 	int position = 0;
 	int xAxe = 100;
-	private final int size = 50;
 	public final CopyOnWriteArrayList<Tetriminos> blocks = new CopyOnWriteArrayList<Tetriminos>();
 	boolean isObstacle = false;
 	
