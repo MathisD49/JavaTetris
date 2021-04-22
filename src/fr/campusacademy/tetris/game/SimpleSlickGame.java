@@ -138,7 +138,7 @@ public class SimpleSlickGame extends BasicGame
 			}
 		}	
 		
-		if (gc.getInput().isKeyPressed(Input.KEY_G)) {
+		if (gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
 			boolean isBorder = false;
 			for(Tetriminos block : test2.get(0).getBlocks(nombre)) {
 				if(block.getX() == 0) {
@@ -159,7 +159,7 @@ public class SimpleSlickGame extends BasicGame
 			}
 		}
 		
-		if (gc.getInput().isKeyPressed(Input.KEY_H)) {
+		if (gc.getInput().isKeyPressed(Input.KEY_RIGHT)) {
 			boolean isBorder = false;
 			for(Tetriminos block : test2.get(0).getBlocks(nombre)) {
 				if(block.getX() == 450) {
@@ -181,12 +181,12 @@ public class SimpleSlickGame extends BasicGame
 			}
 		}
 		
-		if (gc.getInput().isKeyPressed(Input.KEY_F)) {
+		if (gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
 			//squareline.rotate(squareline.isVertical());
 			test2.get(0).rotateLeft(test2.get(0).getIndexRotate(nombre), nombre);
 		}
 		
-		if (gc.getInput().isKeyPressed(Input.KEY_J)) {
+		if (gc.getInput().isKeyPressed(Input.KEY_UP)) {
 			test2.get(0).rotateRight(test2.get(0).getIndexRotate(nombre), nombre);
 			
 		}
