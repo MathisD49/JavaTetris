@@ -20,6 +20,13 @@ public class TetriminosT extends Tetriminos{
 		
 	}
 	
+	public TetriminosT(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
+		bloc1 = new Tetriminos(Color.magenta, 50, 50, x1, y1);
+		bloc2 = new Tetriminos(Color.magenta, 50, 50, x2, y2);
+		bloc3 = new Tetriminos(Color.magenta, 50, 50, x3, y3);
+		bloc4 = new Tetriminos(Color.magenta, 50, 50, x4, y4);
+	}
+	
 	public void createItem(Graphics g) {
 		bloc1.createItem(g);
 		bloc2.createItem(g);

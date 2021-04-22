@@ -8,7 +8,6 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 import fr.campusacademy.tetris.game.SimpleSlickGame;
-import fr.campusacademy.tetris.game.TestWindow;
 
 public class Launcher {
 	public static void main(String[] args)

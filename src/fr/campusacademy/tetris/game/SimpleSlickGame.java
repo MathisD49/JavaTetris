@@ -22,13 +22,18 @@ public class SimpleSlickGame extends BasicGame
 	public final CopyOnWriteArrayList<Tetriminos> blocks = new CopyOnWriteArrayList<Tetriminos>();
 	boolean isObstacle = false;
 	
-	public final ArrayList<TypeArrayList> test2 = new ArrayList<>();
+	public final ArrayList<TypeArrayList> gameBlock = new ArrayList<>();
+	public final ArrayList<PreviewTetriminos> preview = new ArrayList<>();
 	
 	double nombre = Math.random();
+	double nombre2 = Math.random();
 	
 	Tetriminos highestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
 	
 	Score score = new Score();
+	
+	// générer le preview ici
+	
 	
 	private GameContainer gc;
 	
@@ -40,9 +45,9 @@ public class SimpleSlickGame extends BasicGame
 	@Override
 	public void init(GameContainer gc) throws SlickException {		
 		
-		test2.add(new TypeArrayList(nombre));
-		System.out.println(test2.get(0).getBlocks(nombre));
+		gameBlock.add(new TypeArrayList(nombre));
 		
+		preview.add(new PreviewTetriminos(nombre2));
 		
 		
 	}
@@ -58,7 +63,7 @@ public class SimpleSlickGame extends BasicGame
 		int count = 0;
 		// création d'une liste qui contiendra tous les highestBlock pour les différents AxeX de la pièce
 		Tetriminos listHighestBlock[] = new Tetriminos[4];
-		for (Tetriminos xAxe : test2.get(0).getBlocks(nombre)) {
+		for (Tetriminos xAxe : gameBlock.get(0).getBlocks(nombre)) {
 			Tetriminos intermediateHighestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
 			for (Tetriminos tetri : blocks) {
 				if(tetri.getX() == xAxe.getX() && tetri.getY() < intermediateHighestBlock.getY()) {
@@ -72,12 +77,12 @@ public class SimpleSlickGame extends BasicGame
 		// vérification qu'il n'y a pas de bloc sur sa route ou qu'il arrive au bout (si oui il avance)
 		
 		boolean isObstacle = false;
-		if(test2.get(0).isMovable(nombre)) {
-			for(Tetriminos myBlock : test2.get(0).getBlocks(nombre)) {
+		if(gameBlock.get(0).isMovable(nombre)) {
+			for(Tetriminos myBlock : gameBlock.get(0).getBlocks(nombre)) {
 				for(Tetriminos myHighestBlock : listHighestBlock) {
 					if(myBlock.getY() == myHighestBlock.getY()-50 && myBlock.getX() == myHighestBlock.getX() || myBlock.getY() == 850) {
 						isObstacle = true;
-						test2.get(0).setMovable(false, nombre);
+						gameBlock.get(0).setMovable(false, nombre);
 					} else if (myBlock.getY() == myHighestBlock.getY() && myBlock.getY() == 0) { // mise en place d'un GAME OVER quand il n'y a plus de place pour faire spawn une pièce
 						System.out.println("GAME OVER  !!!!!!!!!");
 						gc.exit();
@@ -85,8 +90,8 @@ public class SimpleSlickGame extends BasicGame
 				}
 			}
 			
-			if(!test2.get(0).isMovable(nombre)) {
-				for(Tetriminos block : test2.get(0).getBlocks(nombre)) {
+			if(!gameBlock.get(0).isMovable(nombre)) {
+				for(Tetriminos block : gameBlock.get(0).getBlocks(nombre)) {
 					blocks.add(block);
 					
 				}
@@ -125,27 +130,31 @@ public class SimpleSlickGame extends BasicGame
 				}
 				
 				// premet de générer une nouvelle pièce
-				test2.remove(0);
-				nombre = Math.random();
-				test2.add(new TypeArrayList(nombre));
+				gameBlock.remove(0);
+				nombre = nombre2;
+				gameBlock.add(new TypeArrayList(nombre));
+				preview.remove(0);
+				nombre2 = Math.random();
+				preview.add(new PreviewTetriminos(nombre2));
+				
 				
 			}
 			
 			if(!isObstacle) {
-				test2.get(0).goDown(nombre);
+				gameBlock.get(0).goDown(nombre);
 			}
 		}	
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
 			boolean isBorder = false;
-			for(Tetriminos block : test2.get(0).getBlocks(nombre)) {
+			for(Tetriminos block : gameBlock.get(0).getBlocks(nombre)) {
 				if(block.getX() == 0) {
 					isBorder = true;
 				}
 			}
 			
 			for(Tetriminos tetri : blocks) {
-				for(Tetriminos block : test2.get(0).getBlocks(nombre)) {
+				for(Tetriminos block : gameBlock.get(0).getBlocks(nombre)) {
 					if(block.getX() - 50 == tetri.getX() && block.getY() == tetri.getY()) {
 						isBorder = true;
 					}
@@ -153,13 +162,13 @@ public class SimpleSlickGame extends BasicGame
 			}
 			
 			if(!isBorder) {
-				test2.get(0).goLeft(nombre);
+				gameBlock.get(0).goLeft(nombre);
 			}
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_RIGHT)) {
 			boolean isBorder = false;
-			for(Tetriminos block : test2.get(0).getBlocks(nombre)) {
+			for(Tetriminos block : gameBlock.get(0).getBlocks(nombre)) {
 				if(block.getX() == 450) {
 					isBorder = true;
 				}
@@ -167,7 +176,7 @@ public class SimpleSlickGame extends BasicGame
 			
 			
 			for(Tetriminos tetri : blocks) {
-				for(Tetriminos block : test2.get(0).getBlocks(nombre)) {
+				for(Tetriminos block : gameBlock.get(0).getBlocks(nombre)) {
 					if(block.getX() + 50 == tetri.getX() && block.getY() == tetri.getY()) {
 						isBorder = true;
 					}
@@ -175,17 +184,17 @@ public class SimpleSlickGame extends BasicGame
 			}
 			
 			if(!isBorder) {
-				test2.get(0).goRight(nombre);
+				gameBlock.get(0).goRight(nombre);
 			}
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
 			//squareline.rotate(squareline.isVertical());
-			test2.get(0).rotateLeft(test2.get(0).getIndexRotate(nombre), nombre);
+			gameBlock.get(0).rotateLeft(gameBlock.get(0).getIndexRotate(nombre), nombre);
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_UP)) {
-			test2.get(0).rotateRight(test2.get(0).getIndexRotate(nombre), nombre);
+			gameBlock.get(0).rotateRight(gameBlock.get(0).getIndexRotate(nombre), nombre);
 			
 		}
 		
@@ -194,33 +203,32 @@ public class SimpleSlickGame extends BasicGame
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		
+		// zone de jeu
 		g.setColor(Color.white);
 		g.fillRect(0, 0, 500, 900);
-		g.setColor(Color.black); //set la couleur pour notre carré
+		
+		// zone avec les données
+		g.setColor(Color.black);
 		g.fillRect(500, 0, 200, 900);
+		
+		// zone de preview
+		g.setColor(Color.lightGray);
+		g.fillRect(500, 700, 200, 200);
 		
 		for (Tetriminos tetri: blocks) {
 			tetri.createItem(g);
 		}
 		
-		test2.get(0).createItem(g, nombre);
+		// creer la pièce de jeu et la pièce de preview
+		gameBlock.get(0).createItem(g, nombre);
+		preview.get(0).createItem(g, nombre2);
 		
+		// permet d'afficher le texte avec le score
 		g.setColor(Color.white);
-		
-		// quadrillage
-//		for (int i = 0; i < 50; i++) {
-//			float y = i*size;
-//			float x = 0;
-//			g.drawLine(x, y, gc.getWidth(), y);
-//			
-//			for (int j = 0; j < 50; j++) {
-//				float x2 = j*size;
-//				g.drawLine(x2, y, x2, gc.getHeight());
-//			}
-//		}
 		
 		g.drawString("SCORE : ", 550, 50);
 		g.drawString("" + score.getPoint(), 600, 100);
+		
 		
 	}
 	
@@ -234,9 +242,3 @@ public class SimpleSlickGame extends BasicGame
 		}
 	}
 }
-
-//pour la descente des pieces quand on supprime une ligne dire à tous les blocs du dessus de descendre de 50 (ou 50*ligne_supprime)
-
-// si mon item arrive vers un obstacle il s'arrete. si mon item est DANS un obstacle, il ne se stop pas
-
-// dire que si un ou plus des quatres blocs du spawn sont pris, game over
