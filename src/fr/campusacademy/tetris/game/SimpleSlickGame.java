@@ -113,9 +113,9 @@ public class SimpleSlickGame extends BasicGame
 								blocks.remove(blocks.indexOf(tetri));
 							}
 						}
+						
 						score.setNbLigne(score.getNbLigne() + 1);
 						
-						score.calculerScore(score.getNbLigne());
 						
 						for(Tetriminos tetri : blocks) {
 							if(tetri.getY() < j) {
@@ -124,9 +124,11 @@ public class SimpleSlickGame extends BasicGame
 						}
 						
 					}
-					score.setNbLigne(0);
 					
 				}
+				
+				score.calculerScore(score.getNbLigne());
+				score.setNbLigne(0);
 				
 				// premet de générer une nouvelle pièce
 				gameBlock.remove(0);
