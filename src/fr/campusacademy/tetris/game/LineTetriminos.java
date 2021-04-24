@@ -3,6 +3,7 @@ package fr.campusacademy.tetris.game;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
+// Class pour générer la pièce I
 public class LineTetriminos extends Tetriminos {
 	
 	private Color color;
@@ -10,6 +11,7 @@ public class LineTetriminos extends Tetriminos {
 	
 	private boolean isMovable = true;
 	
+	// on va instancier les bloc pour creer notre pièce
 	private Tetriminos bloc1 = new Tetriminos(Color.cyan, 50, 50, 100, 0);
 	private Tetriminos bloc2 = new Tetriminos(Color.cyan, 50, 50, 150, 0);
 	private Tetriminos bloc3 = new Tetriminos(Color.cyan, 50, 50, 200, 0);
@@ -176,8 +178,3 @@ public class LineTetriminos extends Tetriminos {
 				+ ", bloc4=" + bloc4 + "]";
 	}	
 }
-
-// essayer d'améliorer la rotation de la pièce (plus au centre)
-
-// creer une position de base pour les pièces, creer une variable int de 1 à 4
-// et en fonction du nombre (position) et de la rotation, la pièce tourneras differemment (voir feuille)

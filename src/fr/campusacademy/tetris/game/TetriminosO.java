@@ -3,6 +3,7 @@ package fr.campusacademy.tetris.game;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
+//Class pour générer la pièce O
 public class TetriminosO extends Tetriminos{
 	private Color color;
 	
@@ -10,6 +11,7 @@ public class TetriminosO extends Tetriminos{
 	
 	private int indexRotate = 1;
 	
+	// on va instancier les bloc pour creer notre pièce
 	private Tetriminos bloc1 = new Tetriminos(Color.yellow, 50, 50, 100, 0);
 	private Tetriminos bloc2 = new Tetriminos(Color.yellow, 50, 50, 150, 0);
 	private Tetriminos bloc3 = new Tetriminos(Color.yellow, 50, 50, 100, 50);
@@ -26,6 +28,7 @@ public class TetriminosO extends Tetriminos{
 		bloc4 = new Tetriminos(Color.yellow, 50, 50, x4, y4);
 	}
 	
+	// fonction à appeler pour creer visuellement la pièce
 	public void createItem(Graphics g) {
 		bloc1.createItem(g);
 		bloc2.createItem(g);
@@ -57,14 +60,10 @@ public class TetriminosO extends Tetriminos{
 		bloc4.setX(bloc4.getX() - 50);
 	}
 	
-	public void rotateLeft() {
-		
-	}
+	// on fait deux méthodes vide car ici la rotation est inutile
+	public void rotateLeft(int position) {}
 	
-	public void rotateRight() {
-		
-	}
-	
+	public void rotateRight(int position) {}
 	
 	public Color getColor() {
 		return color;
@@ -140,10 +139,6 @@ public class TetriminosO extends Tetriminos{
 	public void setIndexRotate(int index) {
 		indexRotate = 1;
 	}
-	
-	public void rotateLeft(int nb) {}
-	
-	public void rotateRight(int nb) {}
 
 	@Override
 	public String toString() {

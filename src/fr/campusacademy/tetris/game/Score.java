@@ -35,13 +35,8 @@ public class Score {
 		this.nbLine = nbLign;
 	}
 
+	// méthode permetant de calculer les points gagnés en fonction du nombre de ligne supprimé
 	public void calculerScore(int nbLineDel) {
-//		nbLine += nbLineDel;
-//		if (nbLine % 10 == 0 && nbLine != 0) {
-//			level++;
-//			nbLine = 0;
-//		}
-
 		switch (nbLineDel) {
 		case 1:
 			point += 40;

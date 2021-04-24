@@ -26,9 +26,8 @@ public class Tetriminos {
 	}
 	
 	public void createItem(Graphics g) {
-		//g.drawRect(this.x, this.y, this.height, this.width); -> permet de dessiner un carré vide
 		g.setColor(this.color); //set la couleur pour notre carré
-		g.fillRect(this.x, this.y, this.width, this.height); // dessine un carré mais le remplie avec la couleur d'au dessus
+		g.fillRect(this.x, this.y, this.width, this.height); // dessine un carré et le remplie avec la couleur d'au dessus
 	}
 
 	public Color getColor() {
@@ -72,9 +71,6 @@ public class Tetriminos {
 	}
 
 	public boolean isMovable() {
-		if (!isMovable) {
-			new Tetriminos(Color.red, 50, 50, 100, 0);
-		}
 		return isMovable;
 	}
 

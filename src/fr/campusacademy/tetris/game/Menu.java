@@ -7,11 +7,9 @@ import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Input;
@@ -27,6 +25,7 @@ public class Menu extends JFrame implements ActionListener {
 		ImageIcon quitIcon = new ImageIcon("assets/quitbutton.png");
 		ImageIcon menuIcon = new ImageIcon("assets/menuicon.png");
 		
+		// création du bouton "Play"
 		JButton playButton = new JButton();
 		playButton.setBounds(100, 200, 200, 100);
 		playButton.addActionListener(e -> playGame());
@@ -34,12 +33,14 @@ public class Menu extends JFrame implements ActionListener {
 		playButton.setFocusable(false);
 		playButton.setIcon(playIcon);
 
+		// création du bouton "Exit"
 		JButton quitButton = new JButton();
 		quitButton.setBounds(400, 200, 200, 100);
 		quitButton.addActionListener(e -> System.exit(0));
 		quitButton.setFocusable(false);
 		quitButton.setIcon(quitIcon);
 		
+		// mise en place des différents paramètres de la fenetre
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Tetris Menu");
 		this.setLayout(null);
@@ -50,6 +51,7 @@ public class Menu extends JFrame implements ActionListener {
 		this.add(quitButton);
 	}
 
+	// méthode permet de lancer le jeu
 	void playGame() {
 		try {
 			AppGameContainer appgc;
@@ -63,6 +65,7 @@ public class Menu extends JFrame implements ActionListener {
 		}
 	}
 	
+	// permet de fermer la fenetre du menu après avoir lancé le jeu
 	void removeMenu() {
 		this.setVisible(false);
 	}

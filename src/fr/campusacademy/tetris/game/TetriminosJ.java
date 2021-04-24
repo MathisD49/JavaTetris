@@ -3,6 +3,7 @@ package fr.campusacademy.tetris.game;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
+//Class pour générer la pièce J
 public class TetriminosJ extends Tetriminos{
 	private Color color;
 	
@@ -10,6 +11,7 @@ public class TetriminosJ extends Tetriminos{
 	
 	private int indexRotate = 1;
 	
+	// on va instancier les bloc pour creer notre pièce
 	private Tetriminos bloc1 = new Tetriminos(Color.orange, 50, 50, 100, 50); // A
 	private Tetriminos bloc2 = new Tetriminos(Color.orange, 50, 50, 150, 50); // B
 	private Tetriminos bloc3 = new Tetriminos(Color.orange, 50, 50, 200, 50); // C
@@ -26,6 +28,7 @@ public class TetriminosJ extends Tetriminos{
 		bloc4 = new Tetriminos(Color.orange, 50, 50, x4, y4);
 	}
 	
+	// fonction à appeler pour creer visuellement la pièce
 	public void createItem(Graphics g) {
 		bloc1.createItem(g);
 		bloc2.createItem(g);

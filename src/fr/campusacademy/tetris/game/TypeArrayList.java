@@ -2,6 +2,7 @@ package fr.campusacademy.tetris.game;
 
 import org.newdawn.slick.Graphics;
 
+// class qui va nous permettre de générer la pièce de jeu
 public class TypeArrayList{
 
 	private LineTetriminos myTetriminosI;
@@ -12,7 +13,7 @@ public class TypeArrayList{
 	private TetriminosZ myTetriminosZ;
 	private TetriminosO myTetriminosO;
 	
-	
+	// on définit la pièce qui sera créé
 	public TypeArrayList(double random) {
 		if(random >= 0 && random <= 0.14) {
 			this.myTetriminosT = new TetriminosT();
@@ -25,7 +26,7 @@ public class TypeArrayList{
 		} else if (random > 0.56 && random <= 0.70){
 			this.myTetriminosZ = new TetriminosZ();
 		} else if (random > 0.70 && random <= 0.84){
-			this.myTetriminosS= new TetriminosS();
+			this.myTetriminosS = new TetriminosS();
 		} else {
 			this.myTetriminosO = new TetriminosO();
 		}
@@ -67,6 +68,9 @@ public class TypeArrayList{
 	public TetriminosO getMyTetriminosO() {
 		return myTetriminosO;
 	}
+	
+	// on recreer toutes les méthodes pour pouvoir les utiliser
+	// peu importe la pièce sélectionner
 	
 	public Tetriminos[] getBlocks(double random) {
 		if(random >= 0 && random <= 0.14) {
@@ -266,8 +270,6 @@ public class TypeArrayList{
 			myTetriminosO.createItem(g);
 		}
 	}
-
-
 
 
 	@Override

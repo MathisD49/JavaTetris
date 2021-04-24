@@ -12,6 +12,7 @@ public class PreviewTetriminos {
 	private TetriminosZ myTetriminosZ;
 	private TetriminosO myTetriminosO;
 	
+	// class pour nous permettre de générer la pièce de preview
 	public PreviewTetriminos(double random) {
 		if(random >= 0 && random <= 0.14) {
 			this.myTetriminosT = new TetriminosT(525, 800, 575, 800, 575, 750, 625, 800);

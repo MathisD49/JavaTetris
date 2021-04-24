@@ -18,20 +18,20 @@ public class SimpleSlickGame extends BasicGame
 	
 	int position = 0;
 	int xAxe = 100;
-	public final CopyOnWriteArrayList<Tetriminos> blocks = new CopyOnWriteArrayList<Tetriminos>();
 	boolean isObstacle = false;
 	
-	public final ArrayList<TypeArrayList> gameBlock = new ArrayList<>();
-	public final ArrayList<PreviewTetriminos> preview = new ArrayList<>();
+	// instanciation des différentes listes
+	public final CopyOnWriteArrayList<Tetriminos> blocks = new CopyOnWriteArrayList<Tetriminos>(); //contient les blocs "inactifs"
+	public final ArrayList<TypeArrayList> gameBlock = new ArrayList<>(); // contient les blocs de la pièce qui tombe
+	public final ArrayList<PreviewTetriminos> preview = new ArrayList<>(); // contient les blocs de la pièces de preview
 	
+	// va être utilisé pour générer la pièce et une preview
 	double nombre = Math.random();
 	double nombre2 = Math.random();
 	
 	Tetriminos highestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
 	
 	Score score = new Score();
-	
-	// générer le preview ici
 	
 	
 	private GameContainer gc;
@@ -44,8 +44,8 @@ public class SimpleSlickGame extends BasicGame
 	@Override
 	public void init(GameContainer gc) throws SlickException {		
 		
+		// permet d'ajouter aux deux liste une pièce
 		gameBlock.add(new TypeArrayList(nombre));
-		
 		preview.add(new PreviewTetriminos(nombre2));
 		
 		
@@ -54,14 +54,9 @@ public class SimpleSlickGame extends BasicGame
 	@Override
 	public void update(GameContainer gc, int i) throws SlickException {
 		
-		// création d'une variable pour accueillir le bloc le plus haut sur le même axe X que la pièce 
-		
-		// détermination du bloc le plus haut dans la liste "blocks"
-		
 		// script pour définir le bloc le plus haut.
 		int count = 0;
-		// création d'une liste qui contiendra tous les highestBlock pour les différents AxeX de la pièce
-		Tetriminos listHighestBlock[] = new Tetriminos[4];
+		Tetriminos listHighestBlock[] = new Tetriminos[4]; // création d'une liste qui contiendra tous les highestBlock pour les différents AxeX de la pièce
 		for (Tetriminos xAxe : gameBlock.get(0).getBlocks(nombre)) {
 			Tetriminos intermediateHighestBlock = new Tetriminos(Color.red, 1, 1, 0, 900);
 			for (Tetriminos tetri : blocks) {
@@ -74,7 +69,6 @@ public class SimpleSlickGame extends BasicGame
 		}
 		
 		// vérification qu'il n'y a pas de bloc sur sa route ou qu'il arrive au bout (si oui il avance)
-		
 		boolean isObstacle = false;
 		if(gameBlock.get(0).isMovable(nombre)) {
 			for(Tetriminos myBlock : gameBlock.get(0).getBlocks(nombre)) {
@@ -89,31 +83,30 @@ public class SimpleSlickGame extends BasicGame
 				}
 			}
 			
+			// si la pièce rencontre un obstable ses blocs sont ajoutés à la liste des blocs "inactifs"
 			if(!gameBlock.get(0).isMovable(nombre)) {
 				for(Tetriminos block : gameBlock.get(0).getBlocks(nombre)) {
 					blocks.add(block);
 					
 				}
 				
-				// ceci va regarder si des blocks sont sur la derniere ligne
-				
-				// si la ligne est complete, il va supprimer les blocks de cette lignes puis va faire descendre tous les blocks
-				
+				// script pour regarder si une ligne est pleine et si oui, la supprimer et faire descendre les blocs au dessus
 				for(int j = 0; j<=850; j = j+50) {
-					int test = 0;
+					int ligne = 0;
 					for(Tetriminos tetri : blocks) {
 						if(tetri.getY() == j) {
-							test++;
+							ligne++;
 						}
 					}
 					
-					if(test >= 10) {
+					if(ligne >= 10) {
 						for(Tetriminos tetri : blocks) {
 							if(tetri.getY() == j) {
 								blocks.remove(blocks.indexOf(tetri));
 							}
 						}
 						
+						// récupère le nombre de lignes supprimés pour le score
 						score.setNbLigne(score.getNbLigne() + 1);
 						
 						
@@ -127,10 +120,11 @@ public class SimpleSlickGame extends BasicGame
 					
 				}
 				
+				// calcul le score par rapport au nombre de ligne supprimé et remet le nombre de ligne à 0
 				score.calculerScore(score.getNbLigne());
 				score.setNbLigne(0);
 				
-				// premet de générer une nouvelle pièce
+				// premet de générer une pièce à partir de celle de preview et de regénérer une nouvelle pièce de preview
 				gameBlock.remove(0);
 				nombre = nombre2;
 				gameBlock.add(new TypeArrayList(nombre));
@@ -141,12 +135,16 @@ public class SimpleSlickGame extends BasicGame
 				
 			}
 			
+			// permet de faire descendre la pièce
 			if(!isObstacle) {
 				gameBlock.get(0).goDown(nombre);
 			}
-		}	
+		}
+		
+		
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
+			// script permetant de voir si il y a un bloc sur la gauche
 			boolean isBorder = false;
 			for(Tetriminos block : gameBlock.get(0).getBlocks(nombre)) {
 				if(block.getX() == 0) {
@@ -162,12 +160,14 @@ public class SimpleSlickGame extends BasicGame
 				}
 			}
 			
+			// si il n'y a pas de blocs, la pièce peut aller à gauche
 			if(!isBorder) {
 				gameBlock.get(0).goLeft(nombre);
 			}
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_RIGHT)) {
+			// script permetant de voir si il y a un bloc sur la droite
 			boolean isBorder = false;
 			for(Tetriminos block : gameBlock.get(0).getBlocks(nombre)) {
 				if(block.getX() == 450) {
@@ -184,17 +184,19 @@ public class SimpleSlickGame extends BasicGame
 				}
 			}
 			
+			// si il n'y a pas de blocs, la pièce peut aller à gauche
 			if(!isBorder) {
 				gameBlock.get(0).goRight(nombre);
 			}
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_DOWN)) {
-			//squareline.rotate(squareline.isVertical());
+			// va permetre la rotation vers la gauche de la pièce
 			gameBlock.get(0).rotateLeft(gameBlock.get(0).getIndexRotate(nombre), nombre);
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_UP)) {
+			// va permetre la rotation vers la droite de la pièce
 			gameBlock.get(0).rotateRight(gameBlock.get(0).getIndexRotate(nombre), nombre);
 			
 		}
@@ -216,6 +218,7 @@ public class SimpleSlickGame extends BasicGame
 		g.setColor(Color.lightGray);
 		g.fillRect(500, 700, 200, 200);
 		
+		// permet de creer sur la zone de jeu les blocs inactifs
 		for (Tetriminos tetri: blocks) {
 			tetri.createItem(g);
 		}
@@ -227,6 +230,7 @@ public class SimpleSlickGame extends BasicGame
 		// permet d'afficher le texte avec le score
 		g.setColor(Color.white);
 		
+		// affichage du score
 		g.drawString("SCORE : ", 550, 50);
 		g.drawString("" + score.getPoint(), 600, 100);
 		
