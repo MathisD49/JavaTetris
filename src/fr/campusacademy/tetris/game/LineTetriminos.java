@@ -11,7 +11,7 @@ public class LineTetriminos extends Tetriminos {
 	
 	private boolean isMovable = true;
 	
-	// on va instancier les bloc pour creer notre pièce
+	// on va instancier les blocs pour créer notre pièce
 	private Tetriminos bloc1 = new Tetriminos(Color.cyan, 50, 50, 100, 0);
 	private Tetriminos bloc2 = new Tetriminos(Color.cyan, 50, 50, 150, 0);
 	private Tetriminos bloc3 = new Tetriminos(Color.cyan, 50, 50, 200, 0);
@@ -28,7 +28,7 @@ public class LineTetriminos extends Tetriminos {
 		bloc4 = new Tetriminos(Color.cyan, 50, 50, x4, y4);
 	}
 	
-	// fonction à appeler pour creer visuellement la pièce
+	// fonction à appeler pour créer visuellement la pièce
 	public void createItem(Graphics g) {
 		bloc1.createItem(g);
 		bloc2.createItem(g);
@@ -36,7 +36,7 @@ public class LineTetriminos extends Tetriminos {
 		bloc4.createItem(g);
 	}
 	
-	// permet de faire déscendre la pièce
+	// permet de faire descendre la pièce
 	public void goDown() {
 		bloc1.setY(bloc1.getY() + 50);
 		bloc2.setY(bloc2.getY() + 50);
@@ -90,7 +90,7 @@ public class LineTetriminos extends Tetriminos {
 	
 	// permet de tourner la pièce à gauche
 	public void rotateLeft(int indexRotate) {
-		// étant donné qu'ici la pièce est une ligne, la rotation à droite et à gauche est la même
+		// étant donné qu'ici la pièce est une ligne, la rotation à droite et à gauche sont les même
 		this.rotateRight(indexRotate);
 	}
 	
@@ -149,7 +149,8 @@ public class LineTetriminos extends Tetriminos {
 		this.indexRotate = indexRotate;
 	}
 
-	// pour savoir si la pièce est en mouvement, on met en mouvement ou non tous les Tetriminos de notre pièces
+	// pour savoir si la pièce est en mouvement, 
+	// on met en mouvement ou non tous les Tetriminos de notre pièce
 	public void setMovable(boolean isMovable) {
 		if(isMovable) {
 			bloc1.setMovable(true);

@@ -44,7 +44,7 @@ public class SimpleSlickGame extends BasicGame
 	@Override
 	public void init(GameContainer gc) throws SlickException {		
 		
-		// permet d'ajouter aux deux liste une pièce
+		// permet d'ajouter aux deux listes une pièce au lancement du jeu
 		gameBlock.add(new TypeArrayList(nombre));
 		preview.add(new PreviewTetriminos(nombre2));
 		
@@ -68,7 +68,9 @@ public class SimpleSlickGame extends BasicGame
 			count ++;
 		}
 		
-		// vérification qu'il n'y a pas de bloc sur sa route ou qu'il arrive au bout (si oui il avance)
+		// vérification si la pièce ne rencontre pas d'obstacle (ou le bas de la fenetre)
+		// si oui la pièce s'arrête
+		// si non elle continue de descendre
 		boolean isObstacle = false;
 		if(gameBlock.get(0).isMovable(nombre)) {
 			for(Tetriminos myBlock : gameBlock.get(0).getBlocks(nombre)) {
@@ -120,7 +122,7 @@ public class SimpleSlickGame extends BasicGame
 					
 				}
 				
-				// calcul le score par rapport au nombre de ligne supprimé et remet le nombre de ligne à 0
+				// calcul le score par rapport au nombre de ligne supprimée et remet le nombre de ligne à 0
 				score.calculerScore(score.getNbLigne());
 				score.setNbLigne(0);
 				
@@ -144,7 +146,7 @@ public class SimpleSlickGame extends BasicGame
 		
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_LEFT)) {
-			// script permetant de voir si il y a un bloc sur la gauche
+			// script permettant de voir si il y a un bloc sur la gauche
 			boolean isBorder = false;
 			for(Tetriminos block : gameBlock.get(0).getBlocks(nombre)) {
 				if(block.getX() == 0) {
@@ -167,7 +169,7 @@ public class SimpleSlickGame extends BasicGame
 		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_RIGHT)) {
-			// script permetant de voir si il y a un bloc sur la droite
+			// script permettant de voir si il y a un bloc sur la droite
 			boolean isBorder = false;
 			for(Tetriminos block : gameBlock.get(0).getBlocks(nombre)) {
 				if(block.getX() == 450) {
@@ -227,10 +229,8 @@ public class SimpleSlickGame extends BasicGame
 		gameBlock.get(0).createItem(g, nombre);
 		preview.get(0).createItem(g, nombre2);
 		
-		// permet d'afficher le texte avec le score
-		g.setColor(Color.white);
-		
 		// affichage du score
+		g.setColor(Color.white);
 		g.drawString("SCORE : ", 550, 50);
 		g.drawString("" + score.getPoint(), 600, 100);
 		

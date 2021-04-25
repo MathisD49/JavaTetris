@@ -35,7 +35,7 @@ public class Score {
 		this.nbLine = nbLign;
 	}
 
-	// méthode permetant de calculer les points gagnés en fonction du nombre de ligne supprimé
+	// méthode permettant de calculer les points gagnés en fonction du nombre de ligne supprimée
 	public void calculerScore(int nbLineDel) {
 		switch (nbLineDel) {
 		case 1:

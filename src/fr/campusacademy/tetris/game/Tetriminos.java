@@ -3,6 +3,7 @@ package fr.campusacademy.tetris.game;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
+// class pour les blocs de chaque pièces
 public class Tetriminos {
 	
 	private Color color;

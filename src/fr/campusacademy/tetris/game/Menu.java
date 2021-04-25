@@ -51,7 +51,7 @@ public class Menu extends JFrame implements ActionListener {
 		this.add(quitButton);
 	}
 
-	// méthode permet de lancer le jeu
+	// méthode permettant de lancer le jeu
 	void playGame() {
 		try {
 			AppGameContainer appgc;
